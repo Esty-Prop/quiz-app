@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+}
+
+.menu{
+    
+flex:1;
+padding: 20px;
+min-height: 100vh;
+border-right: solid 2px var(--backPrim);
+box-shadow: 0px 20px 20px rgb(0 0 0 / 10%);
+
+}
+
+.content{
+flex:4;
+background-color: var(--backPrim);
+/* padding: 20px; */
+}
+.main-content{
+    background-color: var(--backPrim);
+    padding: 20px;
+}

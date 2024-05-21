@@ -1,0 +1,87 @@
+.quizzez-list{
+    padding: 20px;
+    border-radius: 10px;
+
+}
+.quizzes-list-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px ;
+
+}
+thead{
+    color: var(--primary);
+}
+.quizzes-list-add-button{
+    padding: 10px;
+    background-color:var(--primary);
+    color: var(--bg);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quizzes-list-table{
+    box-shadow: 0px 20px 20px rgb(0 0 0 / 10%);
+
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    background-color: var(--bg);
+}
+
+.quizzes-list-table td{
+    padding: 10px;
+}
+
+.quizzes-list-company{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quizzes-list-company-image{
+    border-radius: 50%;
+    object-fit: cover;
+}
+.quizzes-list-buttons{
+    display: flex;
+    gap:10px    
+}
+.quizzes-list-button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: var(--text);
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.quizzes-list-view{
+    background-color: var(--positive);
+    color: #ffff;
+}
+
+.quizzes-list-delete{
+    background-color:var(--nagative);
+    color: #ffff;
+}
+.correct{
+    border-color: rgb(128, 255, 0);
+    border-style: solid;
+    padding: 5px;
+    border-radius: 100px;
+}
+.active-quizzes-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.active-quizzes-item{
+    background-color: var(--bg);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}

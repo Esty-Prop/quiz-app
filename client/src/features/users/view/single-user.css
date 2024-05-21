@@ -1,0 +1,102 @@
+.single-user-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-top: 20px;
+  font-family: "Noto Sans Hebrew", sans-serif;
+
+}
+
+.single-user-info-txt {
+  padding: 0 20px;
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.single-user-info {
+  flex: 1;
+  background-color: var(--bg);
+  border-radius: 10px;
+  font-weight: bold;
+  color: var(--primary);
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: solid 1px var(--txtMain);
+  padding-bottom: 20px;
+}
+.single-user-info-section {
+  background-color: rgba(0, 89, 255, 0.381) !important;
+height: 150px;
+  border-radius: 10px 10px 0 0;
+}
+
+.single-user-img-container {
+  padding-left: 20px;
+  height: min-content;
+  /* width: 100%; */
+  /* position: relative; */
+  margin-top: -40px;
+  border-radius: 10px;
+  overflow: hidden;
+  /* margin-bottom: 20px; */
+}
+
+.single-user-img-container img {
+  object-fit: contain;
+  width: 100% !important;
+
+}
+
+.single-user-form-container {
+  flex: 3;
+  background-color: var(--bg);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.single-user-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-user-form input,
+.single-user-form textarea,
+.single-user-form select {
+  padding: 20px;
+  border: 2px solid #2e374a;
+  border-radius: 5px;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 10px 0px;
+}
+
+.single-user-form label {
+  font-size: 12px;
+}
+
+.single-user-form button {
+  width: 100%;
+  padding: 20px;
+  background-color: var(--primary);
+  color: var(--bg);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.single-user-info-name {
+  color: var(--textMain);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+
+
+}

@@ -1,0 +1,42 @@
+.add-user-container {
+    background-color: var(--bg);
+    box-shadow: 0px 20px 20px rgb(0 0 0 / 10%);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  .add-user-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .add-user-form input,
+  .add-user-form textarea,
+  .add-user-form select {
+    padding: 30px;
+    background-color: var(--bg);
+    color: var(--text);
+    border: 2px solid var(--stroke);
+    border-radius: 5px;
+    margin-bottom: 30px;
+  }
+  
+  .add-user-form input, .add-user-form select {
+    width: 45%;
+  }
+  
+  .add-user-form textarea{
+    width: 100%;
+  }
+  
+  .add-user-form button{
+    width: 100%;
+    padding: 30px;
+    background-color: var(--primary);
+    color: var(--bg);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }

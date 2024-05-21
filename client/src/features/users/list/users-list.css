@@ -1,0 +1,79 @@
+.users-list {
+
+}
+.users-list-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+thead {
+  color: var(--primary);
+}
+
+.users-list-item {
+  border: solid 1px var(--stroke);
+
+}
+
+
+
+.users-list-add-button {
+  padding: 10px;
+  background-color: var(--primary);
+  color: var(--bg);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.users-list-table {
+  width: 100%;
+  background-color: var(--bg);
+  box-shadow: 0px 20px 20px rgb(0 0 0 / 10%);
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.users-list-table td {
+  padding: 10px;
+  border-radius: 0px;
+  /* border-bottom:solid 0.5px; */
+}
+
+.users-list-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.users-list-user-image {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.users-list-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.users-list-button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+}
+
+.users-list-view {
+  background-color: #137913;
+  color: #ffff;
+  font-size: 0.8rem;
+
+}
+
+.users-list-delete {
+  background-color: var(--nagative);
+  color: #ffff;
+}

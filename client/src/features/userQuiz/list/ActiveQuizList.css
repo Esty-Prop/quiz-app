@@ -1,0 +1,110 @@
+.active-quizzes-item-copmlated {
+    /* background-color: aqua; */
+}
+
+.active-quizzes-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: min-content;
+}
+.active-quizzes-item-completed{
+    box-shadow: 0px 15px 20px rgba(116, 116, 116, 0.1);
+    border-radius: 10px;
+    /* margin: 10px; */
+    /* height: 300px; */
+    background-color: white;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    padding: 15px;
+    align-items: center;
+    width: 100%;
+}
+.active-quizzes-item {
+    box-shadow: 0px 15px 20px rgba(116, 116, 116, 0.1);
+    border-radius: 10px;
+    /* margin: 10px; */
+    /* height: 300px; */
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: 15px;
+    align-items: center;
+
+}
+
+.btn-start-quiz {
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 10px;
+    background-color: var(--primary);
+    color: white;
+    border-style: none;
+    box-shadow: 0px 15px 20px rgba(56, 42, 255, 0.6);
+}
+.quiz-score, .quiz-view{
+display: flex;
+color: rgb(0, 0, 104);
+gap: 10px;
+width: 80px;
+justify-content: end;
+}
+.quiz-score{
+    justify-content: space-between;
+
+}
+.quiz-title h3{
+    font-weight: 300;
+}
+.quiz-score{
+    background-color: #1aff00;
+    box-shadow: 0px 10px 20px rgba(113, 255, 42, 0.376);
+    border-radius: 10px;
+    height: fit-content;
+    padding: 5px;
+}
+.quiz-completed{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+justify-content: start !important;
+align-items: flex-start !important; 
+   gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(12, 43, 248, 0.117);
+}
+.quiz-title{
+padding: 10px 0;
+font-weight: 300;
+}
+.quiz-todo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    height: min-content;
+
+}
+.quiz-view{
+   
+    padding: 5px;
+    border-radius: 100px;
+
+}
+@media only screen and (max-width:992px) {
+    .title h1 {
+        font-size: 60px;
+    }
+    .active-quizzes-list {
+        grid-template-columns: 1fr ;
+
+    }
+}
+
+@media only screen and (max-width:768px) {
+   
+
+    
+}
+

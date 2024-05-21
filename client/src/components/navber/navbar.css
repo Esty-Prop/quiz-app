@@ -1,0 +1,43 @@
+.navbar{
+    padding: 10px 20px;
+    background-color: var(--bg);
+    box-shadow: 20px 5px 20px rgb(0 0 0 / 10%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 5;
+}
+.navbar-title{
+    color: var(--textSoft);
+    font-weight: bold;
+}
+.navbar-menu{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-search{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #FFFF;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 2px var(--stroke);
+}
+
+.navbar-input{
+    background-color: #FFFF;
+    border:none;
+    color:var(--text)
+}
+.navbar-icons{
+    display: flex;
+    gap: 20px;
+}
+.side-car-user-username{
+    color: var(--textMain);
+}
+/* .side-bar-user{
+    /* margin-top:10px; */

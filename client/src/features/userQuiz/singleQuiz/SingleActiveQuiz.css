@@ -1,0 +1,50 @@
+.quizzes-title{
+    font-weight: 400;
+    padding-bottom : 20px;
+    border-bottom: solid 1px;
+}
+.quizzes-list-score{
+    background-color: rgb(248, 255, 47);
+}
+.quizzes-list-date{
+    background-color: rgb(235, 235, 235);
+}
+.quizzes-list-score ,.quizzes-list-date{
+    font-weight: 300;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:10px;
+}
+.quizzes-list-title{
+
+}
+
+
+  
+  
+
+
+ tbody tr:nth-child(odd) {
+    background-color: rgba(134, 150, 198, 0.106);
+  }
+  
+tbody tr:nth-child(even) {
+    background-color: rgb(255, 255, 255);
+  }
+
+table {
+    border-collapse: collapse;
+
+ }
+ table tr {
+    height: 60px;
+    border-bottom: 1px solid rgb(82, 82, 82);
+ }
+ table td{
+    padding-left: 30px !important;
+ }
+

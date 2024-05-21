@@ -1,0 +1,53 @@
+
+:root {
+  --bg: #ffff;
+  --bgSoft: #F2F0F9;
+  /* --text: #25213B; */
+
+  --textSoft: #25213B;
+  --btnF: #5d57c9;
+  --btnS:  rgb(0, 158, 158);
+  /* --primary: #6d5bd0; */
+  --primary: #316AFF;
+ --backPrim:#F7F8FA;
+ --backPrimary:#316bff28;
+ --backParent: #A6ADC2;
+ --textMain: #263251;
+ --text: #54575f;
+ --stroke:#F4F4F6;
+
+
+
+ /* --backParent:#F2F0F9; */
+ --backStripe:#F4F2FF;
+ --fontPrim:#25213B;
+ --fontVariant:#25213B;
+ --iconPrim:#25213B;
+ --positive:#239e23;
+ --nagative:#D30000;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Noto Sans Hebrew", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  /* direction: rtl; */
+  text-align: left;
+
+}
+
+body{
+  background-color: var(--bg);
+  color: var(--text)
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}

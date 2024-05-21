@@ -1,0 +1,19 @@
+.search-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: solid 2px var(--primary);
+    background-color: #ffffff00;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.search-input{
+    
+    background-color: transparent;
+    border:none 0px !important;
+    color:var(--text);
+    height: 30px;
+    font-weight: 300;
+    font-family: "Noto Sans Hebrew", sans-serif;
+}
