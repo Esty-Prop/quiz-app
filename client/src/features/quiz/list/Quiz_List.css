@@ -14,12 +14,15 @@ thead{
     color: var(--primary);
 }
 .quizzes-list-add-button{
-    padding: 10px;
+    padding: 10px 20px;
     background-color:var(--primary);
     color: var(--bg);
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+ 
 }
 
 .quizzes-list-table{
