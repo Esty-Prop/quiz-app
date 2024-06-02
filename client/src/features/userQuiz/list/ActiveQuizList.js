@@ -36,9 +36,9 @@ const ActiveQuizList = () => {
             <div className="quiz-todo">
             <h3 className="quiz-title">quiz completed</h3>
                 {quizzesObject.data?.map(quiz => {
-                    if (!UserQuizzesObject?.data.find(e => (e.quiz._id === quiz._id))) {
+                    if (!UserQuizzesObject?.data.find(e => (e.quiz?._id === quiz?._id))) {
                         return <div className="active-quizzes-item">
-                            <h3> {quiz?.title}</h3>
+                            <h3> {quiz.title}</h3>
                             <button className="btn-start-quiz" onClick={() => { startQuiz(quiz._id) }} >start Quiz</button>
                         </div>
                     }
@@ -53,7 +53,7 @@ const ActiveQuizList = () => {
                     <div className="quiz-title">
                         <QuizOutlinedIcon />
 
-                        <h3> {`${quiz?.quiz.title}`}</h3>
+                        <h3> {`${quiz?.quiz?.title}`}</h3>
                     </div>
                     <div className="quiz-score">
                         <EmojiEventsOutlinedIcon />

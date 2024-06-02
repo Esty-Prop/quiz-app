@@ -36,6 +36,7 @@
     padding: 20px;
     border-radius: 10px;
     height:110px;
+   
 }
 
 .single-quiz-form{
@@ -69,9 +70,17 @@
     width: 40%;
     padding: 20px;
     background-color:var(--primary);
-    color:var(--fontVariant);
+    color:var(--bg);
     border:none;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 0;
+}
+.lableCheckbox{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    width:min-content;
+}
+.lableCheckbox input{
 }

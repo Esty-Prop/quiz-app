@@ -22,7 +22,7 @@ const SingleActiveQuiz = () => {
         {/* <h2>Quizzes taken</h2> */}
        
         <div className="quizzes-list-top">
-        <h3 className="quizzes-list-title">{quiz.quiz.title}</h3>
+        <h3 className="quizzes-list-title">{quiz?.quiz?.title}</h3>
         <h4 className="quizzes-list-score"><CreditScoreIcon/>{`  score: ${quiz.score}`}</h4>
         <h4 className="quizzes-list-date"><EventNoteIcon/>{quiz.createdAt?.toString().slice(0, 10)}</h4>
 
@@ -38,7 +38,7 @@ const SingleActiveQuiz = () => {
             </tr>
           </thead>
           <tbody>
-            {Object.values(quiz.answers).map(q => (
+            {Object.values(quiz?.answers).map(q => (
               <tr  key={q._id}>
                 <td>
                   <div className="quizzes-list-company">

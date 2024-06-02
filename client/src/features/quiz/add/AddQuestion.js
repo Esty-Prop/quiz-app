@@ -40,15 +40,15 @@ const AddQuestion = () => {
                 <input
                     type="text"
                     name="title"
-                    placeholder="הכנס כאן את השאלה"
+                    placeholder="Enter question"
                     required={true}
                     /><br />
                 <div className="add-ques-form-option">
-                    <label className='question-lable'>תשובה #1</label><br />
+                    <label className='question-lable'>#1 answer</label><br />
                     <input
                         type="text"
                         name="option1"
-                        placeholder="הכנס כאן את התשובה"
+                        placeholder="Enter answer"
                         required={true}
                     />
                     <input
@@ -63,11 +63,11 @@ const AddQuestion = () => {
                     <label className='radio-label' htmlFor='option1'><MdCheck/>תשובה נכונה</label>
                 </div>
                 <div className="add-ques-form-option">
-                    <label className='question-lable'>תשובה #2</label><br />
+                    <label className='question-lable'> #2 answer</label><br />
                     <input
                         type="text"
                         name="option2"
-                        placeholder="הכנס כאן את התשובה"
+                        placeholder="Enter answer"
                         required={true}
 
                     />
@@ -82,11 +82,11 @@ const AddQuestion = () => {
                     <label className='radio-label' htmlFor='option2'><MdCheck/>תשובה נכונה </label>
                 </div>
                 <div className="add-ques-form-option">
-                    <label className='question-lable'>תשובה #3</label><br />
+                    <label className='question-lable'> #3 answer</label><br />
                     <input
                         type="text"
                         name="option3"
-                        placeholder="הכנס כאן את התשובה"
+                        placeholder="Enter answer"
                         required={true}
                     />
 
@@ -100,7 +100,7 @@ const AddQuestion = () => {
                     <label className='radio-label' htmlFor='option3'><MdCheck/>תשובה נכונה </label>
                 </div>
 
-                <button>עדכן</button>
+                <button>Add new question</button>
             </form>
         </div>
     )

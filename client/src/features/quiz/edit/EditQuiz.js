@@ -4,6 +4,8 @@ import { useGatAllquizzesQuery, useUpdateQuizMutation } from "../quizzesApiSlice
 import { useEffect } from "react";
 import AddQuestion from "../add/AddQuestion";
 import QuestionList from "../list/QuestionList";
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 const EditQuiz = () => {
     const { id } = useParams()
     const { data: quizzesObject, isError, error, isLoading, isSuccess } = useGatAllquizzesQuery()
@@ -19,9 +21,14 @@ const EditQuiz = () => {
         e.preventDefault()
         const data = new FormData(e.target)
         const quizObject = Object.fromEntries(data.entries())
+        console.log(quizObject);
+
         updateQuiz({ ...quizObject, isActive: quizObject.isActive == 'on' ? true : false, questions: quiz.questions })
     }
-
+    // const handleChange = (event) => {
+    //     setIsActive(event.target.checked);
+    //     // Add any additional logic here, such as updating state or making an API call
+    // };
 
     if (isLoading) return <h1> Loading ...</h1>
     if (isError) return <h1>{JSON.stringify(error)}</h1>
@@ -32,9 +39,7 @@ const EditQuiz = () => {
         <div className="add-single-quiz-container">
             <div className="single-quiz-container">
                 <div className="single-quiz-info">
-                    <div className="single-quiz-img-container">
-                        <img src={quiz.image || "/noavatar.png"} />
-                    </div>
+
                     {quiz.title}
                 </div>
                 <div className="single-comapny-form-container">
@@ -46,11 +51,20 @@ const EditQuiz = () => {
                             name="title"
                             placeholder="הכנס שם מבחן"
                         />
+                         {/* <Switch
+            name="isActive"
+            checked={quiz.isActive}
+            // onChange={handleChange}
+        />
+                         <FormControlLabel name="isActive"  control={<Switch   checked={quiz.isActive} />} label="Uploud" /> */}
+                        <label className="lableCheckbox">uploud
                         <input type="checkbox"
                             name="isActive"
                             defaultChecked={quiz.isActive}
                         ></input>
-                        <button>עדכן</button>
+                        </label>
+                        
+                        <button>Update</button>
                     </form>
                 </div>
             </div>

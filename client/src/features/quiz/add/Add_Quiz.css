@@ -14,7 +14,7 @@ input{
     border-radius: 10px;
 }
 .add-quiz-form input{
-    padding: 30px;
+    padding: 20px;
     background-color: var(--bg);
     color: var(--text);
     border-radius: 5px;
@@ -32,7 +32,7 @@ input{
 }
 .add-quiz-form button,.add-ques-form button{
     width: 100%;
-    padding: 30px;
+    padding: 20px;
     background-color: var(--primary);
     color: var(--bg);
     border: none;
@@ -45,12 +45,12 @@ input[type="radio"] {
     height: 1em;
     display: grid;
     place-content: center;
-    background-color: blueviolet;
+    background-color: var(--primary);
 }
 .add-ques-form .radio-label {
     border-radius: 100px;
     width: 150px;
-    height: 50px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,9 +58,9 @@ input[type="radio"] {
     background-color: rgba(0, 0, 0, 0.157);
 }
 .add-ques-form-option{
-    border-width:  2px 0 0 0;
+    border-width:  1px 0 0 0;
     border-style: solid;
-border-color: var(--bg);
+border-color: var(--text);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,7 +68,7 @@ border-color: var(--bg);
     border-radius: 0;
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 5px 0;
     height: min-content;
 }
 /* Apply styles to the label when the radio button is checked */
@@ -84,7 +84,6 @@ input[type="radio"]{
 .question-lable{
 min-width: 100%;
 background-color: rgba(255, 255, 255, 0);
-margin-bottom: 20px;
 color: rgb(123, 123, 123);
 }
 img{
