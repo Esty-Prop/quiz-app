@@ -29,6 +29,13 @@ const userQuizApiSlice = apiSlice.injectEndpoints({
                 body:quiz
             }),
         }),
+        getAllUserQuizByQuiz:build.mutation({
+            query:(quiz)=>({
+                url: "/api/userQuizzes/quiz",
+                method:"POST",
+                body:quiz
+            }),
+        }),
         addAnswers:build.mutation({
             query:(ans)=>({
                 url: "/api/userQuizzes/answers",
@@ -80,4 +87,4 @@ const userQuizApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const {useGetAllUserQuizByUserMutation,useGatAllUserquizzesQuery,useAddUserQuizMutation,useDeleteUserQuizMutation,useUpdateUserQuizMutation,useAddAnswersMutation,useGatUserquizByIdQuery} = userQuizApiSlice
+export const {useGetAllUserQuizByQuizMutation,useGetAllUserQuizByUserMutation,useGatAllUserquizzesQuery,useAddUserQuizMutation,useDeleteUserQuizMutation,useUpdateUserQuizMutation,useAddAnswersMutation,useGatUserquizByIdQuery} = userQuizApiSlice

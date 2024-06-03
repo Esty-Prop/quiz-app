@@ -34,7 +34,7 @@ const ActiveQuizList = () => {
     return (
         <div className="active-quizzes-list">
             <div className="quiz-todo">
-            <h3 className="quiz-title">quiz completed</h3>
+                <h3 className="quiz-title">quiz todo</h3>
                 {quizzesObject.data?.map(quiz => {
                     if (!UserQuizzesObject?.data.find(e => (e.quiz?._id === quiz?._id))) {
                         return <div className="active-quizzes-item">
@@ -42,12 +42,12 @@ const ActiveQuizList = () => {
                             <button className="btn-start-quiz" onClick={() => { startQuiz(quiz._id) }} >start Quiz</button>
                         </div>
                     }
-
                 })}
+                {quizzesObject.data && <h3>No Quizzes</h3>}
             </div>
 
             <div className="quiz-completed">
-            <h3 className="quiz-title">quiz completed</h3>
+                <h3 className="quiz-title">quiz completed</h3>
 
                 {UserQuizzesObject?.data.map(quiz => (<div className="active-quizzes-item-completed">
                     <div className="quiz-title">

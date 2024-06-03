@@ -148,9 +148,15 @@ const QuizList = () => {
   const { data: quizzesObject, isError, error, isLoading, isSuccess } = useGatAllquizzesQuery()
   const [deleteQuiz, { isSuccess: isDeleteSuccess }] = useDeleteQuizMutation()
   const navigate = useNavigate();
-  const navigateClick = (_id) => {
+  const navigateClick = (_id,i) => {
+    if(i==0)
     navigate(`/dash/quizzes/${_id}`);
+  else{
+    navigate(`/dash/quizzes/view/${_id}`);
+
+  }
   };
+
   const deleteClick = (quiz) => {
     if (window.confirm("Are you sure you want to delete the quiz?")) {
       deleteQuiz({ _id: quiz._id })
@@ -222,6 +228,7 @@ const QuizList = () => {
           backgroundPosition:
             '0 var(--TableHeader-height), 0 100%, 0 var(--TableHeader-height), 0 100%',
           backgroundColor: 'background.surface',
+          borderRadius:10
         }}
 
       >
@@ -229,15 +236,15 @@ const QuizList = () => {
           aria-labelledby="tableTitle"
           stickyHeader
           hoverRow
-        // sx={{
-        //   '--TableCell-headBackground': 'var(--joy-palette-background-level1)',
-        //   '--Table-headerUnderlineThickness': '1px',
-        //   '--TableRow-hoverBackground': 'var(--joy-palette-background-level1)',
-        //   '--TableCell-paddingY': '4px',
-        //   '--TableCell-paddingX': '8px',
-        // }}
+        sx={{
+          '--TableCell-headBackground': 'var(--joy-palette-background-level1)',
+          '--Table-headerUnderlineThickness': '1px',
+          '--TableRow-hoverBackground': 'var(--joy-palette-background-level1)',
+          '--TableCell-paddingY': '4px',
+          '--TableCell-paddingX': '8px',
+        }}
         >
-          <thead style={{ backgroundColor: 'red' }}>
+          <thead >
             <tr>
               {/* <th style={{ width: 48, textAlign: 'center', padding: '12px 6px' }}>
               <Checkbox
@@ -282,7 +289,7 @@ const QuizList = () => {
               <th style={{ width: 140, padding: '12px 6px' }}>Date</th>
               <th style={{ width: 140, padding: '12px 6px' }}>Status</th>
               <th style={{ width: 200, padding: '12px 6px' }}>details</th>
-              <th style={{ width: 250 }}></th>
+              <th style={{ width: 360 }}></th>
             </tr>
           </thead>
           <tbody>
@@ -343,10 +350,10 @@ const QuizList = () => {
                 </td>
                 <td>
                   <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-                    <Button size="sm" variant="outlined" color="primary" onClick={() => { navigateClick(quiz._id) }}>
-                      View
+                    <Button size="sm" variant="outlined" color="primary" onClick={() => { navigateClick(quiz._id,1) }}>
+                      View user quizzes
                     </Button>
-                    <Button size="sm" variant="plain" color="neutral" onClick={() => { navigateClick(quiz._id) }}>
+                    <Button size="sm" variant="plain" color="neutral" onClick={() => { navigateClick(quiz._id,0) }}>
                       Edit
                     </Button>
                     <Button size="sm" variant="soft" color="danger" onClick={() => { deleteClick(quiz) }} >

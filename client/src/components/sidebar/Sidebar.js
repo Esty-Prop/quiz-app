@@ -21,6 +21,8 @@ import { useLogoutMutation } from '../../features/auth/authApiSlice'
 import './sidebar.css'
 import QuizIcon from '@mui/icons-material/Quiz';
 import useAuth from "../../hooks/useAuth";
+import useAvatarColor from '../../hooks/useAvatarColor';
+
 const Sidebar = () => {
   const { username, firstName,lastName, roles } = useAuth()
   const [logout, { isSuccess }] = useLogoutMutation()
@@ -32,6 +34,10 @@ const Sidebar = () => {
 
     }
   }, [isSuccess])
+  const AvatarColor=(name)=> {
+    let bgcolor = useAvatarColor(name)
+    return (bgcolor.sx.bgcolor.toString());
+  }
   const AdminMenuItems = [
     {
       // title: "דפים",
@@ -117,10 +123,12 @@ const Sidebar = () => {
   const loguotClick = () => {
     logout()
   }
-
+  let c = AvatarColor((`${username} `))
+  console.log(c);
   return (
     <div className="side-bar">
-      <Avatar sx={{m:3, width: 80, height: 80 , bgcolor: 'red'}}>{firstName.charAt(0)+lastName.charAt(0)}</Avatar>
+      <Avatar  sx={{m:3, width: 80, height: 80 ,bgcolor:c}}>{firstName.charAt(0)+lastName.charAt(0)}</Avatar>
+      
       <ul className="side-bar-menu-list">
         {menuItems.map(cat => (
           <li key={cat.title}>

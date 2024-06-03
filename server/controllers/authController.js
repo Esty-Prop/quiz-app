@@ -74,6 +74,7 @@ const login = async (req,res) =>{
         username: foundUser.username,
         firstName: foundUser.firstName,
         lastName: foundUser.lastName,
+        email:foundUser.email,
         roles: foundUser.roles,
     }
 
@@ -117,6 +118,7 @@ const refresh = async (req,res) =>{
                 username: foundUser.username,
                 firstName: foundUser.firstName,
                 lastName: foundUser.lastName,
+                email:foundUser.email,
                 roles: foundUser.roles,
             }
         

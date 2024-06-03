@@ -43,7 +43,6 @@ const QuizExecution = () => {
         setShowCorrect(false);
     };
 
-
     if (isLoading) return <CircularProgress
         size={68}
         sx={{
@@ -94,15 +93,12 @@ const QuizExecution = () => {
                                                 <CloseIcon />
                                             </div>
                                         </label>
-
                                     </li>
                                 ))}
                             </ul>
                         </div>
                         <div className="select-option">   <button className="check-btn" onClick={checkAnswer} disabled={selectedOption === ""}>Next <ArrowForwardIosIcon/></button>
-
                         </div>
-
                     </div>
                 ) : (
                     <div className="quiz-completed">
@@ -112,7 +108,6 @@ const QuizExecution = () => {
                     </div>
                 )}
             </div>
-
         </div>
     );
 };

@@ -13,6 +13,7 @@ import Typography from '@mui/joy/Typography';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import BlockIcon from '@mui/icons-material/Block';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import useAvatarColor from '../../../hooks/useAvatarColor';
 
 const UsersList = () => {
   const { data: usersObject, isError, error, isLoading, isSuccess } = useGetAllUsersQuery()
@@ -25,15 +26,25 @@ const UsersList = () => {
   }
   const navigate = useNavigate();
 
-  const navigateClick = (_id) => {
+  const navigateClick = (_id,i) => {
+    if(i==0)
     navigate(`/dash/users/${_id}`);
+  else{
+    navigate(`/dash/users/view/${_id}`);
+
+  }
   };
+  const AvatarColor=(name)=> {
+    return useAvatarColor(name)
+  }
+  
   const [searchParams] = useSearchParams()
   const q = searchParams.get("q")
 
   if (isLoading) return <h1> Loading ...</h1>
   if (isError) return <h1>{JSON.stringify(error)}</h1>
   const filteredData = !q ? [...usersObject.data] : usersObject.data.filter(user => user?.firstName?.indexOf(q) > -1 || user?.lastName?.indexOf(q) > -1|| user?.username?.indexOf(q) > -1)
+
   return (
     <div className="users-list">
       <div>
@@ -148,11 +159,11 @@ const UsersList = () => {
                   Invoice
                 </Link> 
               </th>*/}
-              <th style={{ width: 140, padding: '12px 6px' }}>Name</th>
-              <th style={{ width: 100, padding: '12px 6px' }}>Date</th>
-              <th style={{ width: 260, padding: '12px 6px' }}>Status</th>
-              <th style={{ width: 120, padding: '12px 6px' }}>details</th>
-              <th style={{ width: 250 }}></th>
+              <th style={{ width: 140, padding: '12px 6px' }}>Username</th>
+              <th style={{ width: 100, padding: '12px 6px' }}>Roles</th>
+              <th style={{ width: 260, padding: '12px 6px' }}>details</th>
+              <th style={{ width: 120, padding: '12px 6px' }}>date</th>
+              <th style={{ width: 350 }}></th>
             </tr>
           </thead>
           <tbody>
@@ -201,7 +212,7 @@ const UsersList = () => {
                 </td>
                 <td>
                   <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-                    <Avatar size="sm">{quiz.firstName.charAt(0)+ quiz.lastName.charAt(0)}</Avatar>
+                    <Avatar  {...AvatarColor((`${quiz.username} `))} size="sm">{quiz.firstName.charAt(0)+ quiz.lastName.charAt(0)}</Avatar>
                     <div>
                       <Typography level="body-xs">{`${quiz.firstName} ${quiz.lastName}`}</Typography>
                       <Typography level="body-xs">{quiz.email}</Typography>
@@ -213,10 +224,10 @@ const UsersList = () => {
                 </td>
                 <td>
                   <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-                    <Button size="sm" variant="outlined" color="primary" onClick={() => { navigateClick(quiz._id) }}>
-                      View
+                    <Button size="sm" variant="outlined" color="primary" onClick={() => { navigateClick(quiz._id,1) }}>
+                      View user quizzes
                     </Button>
-                    <Button size="sm" variant="plain" color="neutral" onClick={() => { navigateClick(quiz._id) }}>
+                    <Button size="sm" variant="plain" color="neutral" onClick={() => { navigateClick(quiz._id,0) }}>
                       Edit
                     </Button>
                     <Button size="sm" variant="soft" color="danger" onClick={() => { deleteClick(quiz) }} >

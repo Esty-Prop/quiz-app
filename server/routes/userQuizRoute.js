@@ -3,7 +3,7 @@ const userQuizController = require("../controllers/userQuizController")
 const router = express.Router()
 
 router.post("/answers" , userQuizController.addAnswers)
-
+router.post("/quiz" , userQuizController.getUserQuizzesByQuiz)
 router.post("/user" , userQuizController.getAllUserQuizzesByUser)
 router.get("/", userQuizController.getUserQuizzes )
 router.get("/:id", userQuizController.getUserQuizById )

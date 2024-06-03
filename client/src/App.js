@@ -22,6 +22,8 @@ import QuizExecution from './features/userQuiz/execution/QuizExecution';
 import UserDashbord from './components/dashBord/UserDashbord';
 import SingleActiveQuiz from './features/userQuiz/singleQuiz/SingleActiveQuiz';
 import RegisterPage from './features/auth/register/RegisterPage';
+import SingleUserInfo from './features/users/view/SingleUserInfo';
+import AllUserQuiz from './features/quiz/view/AllUserQuiz';
 
 
 
@@ -69,12 +71,14 @@ function App() {
                   <Route path="users" element={<Outlet />}>
                     <Route index element={<UsersList />} />
                     <Route path="add" element={<AddUser />} />
+                    <Route path="view/:userId" element={<SingleUserInfo/>} />
                     <Route path=":userId" element={<SingleUser />} />
                   </Route>
                 </Route>
                 <Route path='quizzes' element={<Outlet />}>
                   <Route index element={<QuizList />} />
                   <Route path='add' element={<AddQuiz />} />
+                  <Route path='view/:quizId' element={<AllUserQuiz/>} />
                   <Route path=':id' element={<EditQuiz />} >
                     <Route index element={<QuestionList />} />
                     <Route path='add' element={<AddQuestion />} />

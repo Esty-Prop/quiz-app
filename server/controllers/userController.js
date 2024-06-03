@@ -121,4 +121,36 @@ const deleteUser = async (req, res) => {
         data: {username: updateUser.username, _id: updateUser._id}
     })
 }
-module.exports = { getUsers, getUserById, addUser, updateUser, deleteUser }
+const updateUserByUser = async (req, res) => {
+    const { _id, username, password, lastName, firstName, email } = req.body
+    if (!_id || !username || !firstName ) {
+        return res.status(400).json({
+            error: true,
+            message: "All fields are required",
+            data: null
+        })
+    }
+    const user = await User.findById(_id).exec()
+    if (!user) {
+        return res.status(400).json({
+            error: true,
+            message: "No User found",
+            data: null
+        })
+    }
+    if(password){
+        const hashPwd = await bcrypt.hash(password, 10)
+        user.password = hashPwd
+    }
+    user.username = username
+    user.firstName = firstName
+    user.lastName = lastName
+    user.email = email
+    const updateUser = await user.save()
+    res.json({
+        error: false,
+        message: `Update user ${_id} success`,
+        data: {updateUser}
+    })
+}
+module.exports = { getUsers, getUserById, addUser, updateUser, deleteUser,updateUserByUser }

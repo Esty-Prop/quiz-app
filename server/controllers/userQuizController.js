@@ -36,7 +36,7 @@ const getUserQuizById = async (req, res) => {
 }
 const getAllUserQuizzesByUser = async (req, res) => {
     const { userId } = req.body
-    const userQuizzes = await UserQuiz.find({user: userId}, {}).populate("quiz").lean()
+    const userQuizzes = await UserQuiz.find({ user: userId }, {}).populate("quiz").lean().sort({ createdAt: 'asc'})
     if (!userQuizzes.length) {
         return res.json({
             error: false,
@@ -60,7 +60,7 @@ const addUserQuiz = async (req, res) => {
             data: null
         })
     }
-    const uniqueUserQuiz = await UserQuiz.findOne({ quiz: quiz, user:user }).lean()
+    const uniqueUserQuiz = await UserQuiz.findOne({ quiz: quiz, user: user }).lean()
     if (uniqueUserQuiz) {
         return res.status(409).json({
             error: true,
@@ -100,10 +100,10 @@ const updateUserQuiz = async (req, res) => {
         })
     }
 
-    quiz? userQuiz.quiz = quiz :""
-    user? userQuiz.user = user:""
-    answers? userQuiz.answers = answers:""
-    score? userQuiz.score = score:""
+    quiz ? userQuiz.quiz = quiz : ""
+    user ? userQuiz.user = user : ""
+    answers ? userQuiz.answers = answers : ""
+    score ? userQuiz.score = score : ""
 
 
     const updateUserQuiz = await userQuiz.save()
@@ -186,7 +186,7 @@ const addAnswers = async (req, res) => {
         data: { updateQuis }
     })
 }
-const setScore =  (answers) => {
+const setScore = (answers) => {
     let correntAns = 0
     answers.forEach(ans => {
         console.log(ans);
@@ -198,5 +198,30 @@ const setScore =  (answers) => {
     console.log(100 / answers.length);
     return (100 / answers.length) * correntAns
 }
+const getUserQuizzesByQuiz = async (req, res) => {
+    const { quizId } = req.body
+    if (!quizId) {
+        return res.status(400).json({
+            error: true,
+            message: "quizId is required",
+            data: null
+        })
+    }
+    const userQuizzes = await UserQuiz.find({ quiz: quizId }, {}).populate('user').populate('quiz').lean().sort({ score: 'desc'})
+    if (!userQuizzes.length) {
+        return res.status(400).json({
+            error: true,
+            message: "No userQuizzes",
+            data: null
+        })
+    }
+    res.json({
+        error: false,
+        message: '',
+        data: userQuizzes,
+    })
+}
 
-module.exports = {getAllUserQuizzesByUser, getUserQuizzes, getUserQuizById, addUserQuiz, updateUserQuiz, deleteUserQuiz, addAnswers }
+
+
+module.exports = { getAllUserQuizzesByUser, getUserQuizzes, getUserQuizById, addUserQuiz, updateUserQuiz, deleteUserQuiz, addAnswers ,getUserQuizzesByQuiz}

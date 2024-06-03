@@ -6,9 +6,25 @@ import {
 } from "react-icons/md";
 import useAuth from "../../hooks/useAuth";
 import "./navbar.css"
+import Chip from '@mui/joy/Chip';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import useAvatarColor from '../../hooks/useAvatarColor';
+import Avatar from '@mui/joy/Avatar';
+import { useEffect } from "react"
 
 const Navbar = () => {
     const { username, firstName, roles } = useAuth()
+    const AvatarColor=(name)=> {
+        let bgcolor = useAvatarColor(name)
+        return (bgcolor.sx.bgcolor.toString());
+      }
+    //   useEffect(() => {
+    //     if (username) {
+    //         let c = useAvatarColor(username).sx.bgcolor.toString()
+    
+    //     }
+    //   }, [username])
+  let c = AvatarColor((`${username} `))
 
     return (
         <div className="navbar">
@@ -23,19 +39,32 @@ const Navbar = () => {
                 </div>
 
             </div>
+           
             <div className="side-bar-user">
-                <div className="side-bar-user-details">
-                    <span className="side-car-user-username">{`Hi, ${firstName}`}</span>
-                    {/* <span className="side-car-user-title">{roles}</span> */}
-                </div>
-                <img
+            <Chip
+            variant="soft"
+//   startDecorator={<Avatar />}
+  endDecorator={<PermIdentityIcon />}
+  
+  sx={{
+    p:1,
+    pl:2,
+    pr:2,
+    "--Chip-minHeight": "52px",
+    "--Chip-gap": "4px",
+    "--Chip-decoratorChildHeight": "37px",
+    bgcolor:`${c}1C`
+  }}
+>{`Hi, ${firstName}`}</Chip>
+                
+                {/* <img
                     // src={user.image || "/noavatar.png"}
                     src={"/noavatar.png"}
                     alt=""
                     width="30"
                     height="30"
                     className="side-bar-user-image"
-                />
+                /> */}
 
             </div>
             {/* <div className="navbar-title">
