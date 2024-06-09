@@ -2,6 +2,18 @@
 import {Link, useNavigate } from "react-router-dom";
 import { useRegisterMutation } from '../authApiSlice';
 import { useEffect, useState } from "react";
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const RegisterPage = () => {
   const [register, { isError, error, isLoading, isSuccess, data }] = useRegisterMutation()
@@ -13,68 +25,116 @@ const RegisterPage = () => {
       navigate("/login");
   }, [isSuccess]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const formData = new FormData(e.target);
-    const userObject = Object.fromEntries(formData.entries());
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('username'),
+      password: data.get('password'),
+    });
+    const userObject =  Object.fromEntries(data.entries())
     register(userObject); // Await the login function call
-  };
 
+  };
 
   return (
     <div className="login-page">
-      <div className="login-page-section">
-        <img
-          // src={user.image || "/noavatar.png"}
-          src={"/noavatar.png"}
-          alt=""
-
-        />
-        {/* <form onSubmit={handleSubmit} className="login-page-form">
-          <label>Username</label>
-          <input type="text" required name="username" id="username" placeholder="user name" />
-          <label>Password</label>
-          <input type="password" required name="password" id="password" placeholder="password" />
-          <button type="submit" disabled={isLoading}>Log in</button>
-          {error && error.data?.message}
+       <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography variant="h5">
+            Sign up
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="given-name"
+                  name="firstName"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  name="lastName"
+                  autoComplete="family-name"
+                />
+              </Grid>
           
-        </form> */}
-        <form onSubmit={handleSubmit} className="login-page-form">
-        <input type="text" placeholder="username" name="username" required />
-        <input
-          type="password"
-          placeholder="password"
-          name="password"
-          required
-        />
-        <input type="text" placeholder="firstName" name="firstName" required />
-        <input type="text" placeholder="lastName" name="lastName" required />
-        <input type="email" placeholder="email" name="email" required />
-        {/* <select name="roles" id="roles">
-          <option value="User">
-            הרשאה
-          </option>
-          <option value="Admin">מנהל</option>
-          <option value="User">משתמש</option>
-        </select> */}
-        {/* <select name="active" id="active">
-          <option value={true}>
-            פעיל
-          </option>
-          <option value={true}>כן</option>
-          <option value={false}>לא</option>
-        </select> */}
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="username"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
+            </Button>
+            <Grid container justifyContent="flex-end">
+            <Typography color={"red"} component="" variant="body1">
+              {error && error.data?.message}
+          </Typography>
+              <Grid item>
+                <Link to={`/login`}variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        {/* <Copyright sx={{ mt: 5 }} /> */}
+      </Container>
+      </div>
       
-        <button type="submit">sign up</button>
-        {error&& error.data?.message}
-        <Link to={`/login`} className="quizzes-list-button quizzes-list-view">
-Already A Member? log in                                    </Link>
-      </form>
-      </div>
-
-      <div className="login-img"><h1>Create new account !</h1>
-      </div>
-    </div>
   );
 };
 

@@ -33,10 +33,10 @@ const Navbar = () => {
                     <MdSearch />
                     <input type="text" placeholder="Search..." className="navbar-input" />
                 </div> */}
-                <div className="navbar-icons">
+                {/* <div className="navbar-icons">
                     <MdOutlineChat size={20} />
                     <MdNotifications size={20} />
-                </div>
+                </div> */}
 
             </div>
            

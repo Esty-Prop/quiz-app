@@ -1,7 +1,6 @@
 import Search from "../../../components/search/Search"
-import { useGatAllquizzesQuery, useDeleteQuizMutation } from "../quizzesApiSlice"
+import { useGatAllUserquizzesQuery } from "../userQuizApiSlice"
 import { Link, Navigate, useSearchParams, useNavigate } from "react-router-dom"
-import './Quiz_List.css'
 import * as React from 'react';
 import Avatar from '@mui/joy/Avatar';
 import Box from '@mui/joy/Box';
@@ -13,38 +12,34 @@ import Typography from '@mui/joy/Typography';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import BlockIcon from '@mui/icons-material/Block';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
-const QuizList = () => {
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
-  const { data: quizzesObject, isError, error, isLoading, isSuccess } = useGatAllquizzesQuery()
-  const [deleteQuiz, { isSuccess: isDeleteSuccess }] = useDeleteQuizMutation()
+const CompletedQuizzes = () => {
+
+  const { data: quizzesObject, isError, error, isLoading, isSuccess } = useGatAllUserquizzesQuery()
   const navigate = useNavigate();
   const navigateClick = (_id,i) => {
     if(i==0)
     navigate(`/dash/quizzes/${_id}`);
   else{
-    navigate(`/dash/quizzes/view/${_id}`);
+    navigate(`/dash/userQuizzes/view/${_id}`);
 
   }
   };
 
-  const deleteClick = (quiz) => {
-    if (window.confirm("Are you sure you want to delete the quiz?")) {
-      deleteQuiz({ _id: quiz._id })
-    }
-  }
 
   const [searchParams] = useSearchParams()
   const q = searchParams.get("q")
 
   if (isLoading) return <h1> Loading ...</h1>
   if (isError) return <h1>{JSON.stringify(error)}</h1>
-  const filteredData = !q ? [...quizzesObject.data] : quizzesObject.data.filter(quiz => quiz?.title?.indexOf(q) > -1)
+  const filteredData = !q ? [...quizzesObject.data] : quizzesObject.data.filter(quiz => quiz.quiz?.title?.indexOf(q) > -1)
 
   return (
 
     <div>
       <Typography color="primary" fontWeight={500} fontSize={30}>
-        Quizzes
+        My quizzes
       </Typography>
       <Typography color="neutral" fontWeight={200} fontSize={12}>
         Quizzes you delta makefeed jarks if hello for you :)
@@ -112,8 +107,8 @@ const QuizList = () => {
               <th style={{ width: 140, padding: '12px 6px' }}>Name</th>
               <th style={{ width: 140, padding: '12px 6px' }}>Date</th>
               <th style={{ width: 140, padding: '12px 6px' }}>Status</th>
-              <th style={{ width: 200, padding: '12px 6px' }}>details</th>
-              <th style={{ width: 360 }}></th>
+              {/* <th style={{ width: 200, padding: '12px 6px' }}>details</th> */}
+              <th style={{ width: 160 }}></th>
             </tr>
           </thead>
           <tbody>
@@ -121,12 +116,25 @@ const QuizList = () => {
               <tr key={quiz.id}>
                
                 <td>
-                  <Typography level="body-xs">{quiz.title}</Typography>
+                  <Typography level="body-xs">{quiz.quiz?.title}</Typography>
                 </td>
                 <td>
-                  <Typography level="body-xs"> {quiz.createdAt?.toString().slice(0, 10)}</Typography>
-                </td>
-                <td>
+                    <Typography level="body-xs"> {quiz.createdAt?.toString().slice(0, 10)}</Typography>
+                  </td> 
+                  <td>
+                    <Chip
+                      variant="soft"
+                      size="sm"
+                      startDecorator={< EmojiEventsIcon/>}
+                      color={
+                     'success'
+                      }
+                    >
+                      {quiz.score}
+                    </Chip>
+                  </td>              
+                
+                {/* <td>
                   <Chip
                     variant="soft"
                     size="sm"
@@ -147,27 +155,22 @@ const QuizList = () => {
                   >
                     {quiz.isActive ? 'Uploud' : 'Draft'}
                   </Chip>
-                </td>
-                <td>
+                </td> */}
+                {/* <td>
                   <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-                    <Avatar size="sm">{quiz.questions.length}</Avatar>
+                    <Avatar size="sm">{quiz.questions?.length}</Avatar>
                     <div>
                       <Typography level="body-xs">activity 80</Typography>
                       <Typography level="body-xs">avg 60%</Typography>
                     </div>
                   </Box>
-                </td>
+                </td> */}
                 <td>
                   <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                     <Button size="sm" variant="outlined" color="primary" onClick={() => { navigateClick(quiz._id,1) }}>
-                      View user quizzes
+                      View Answers
                     </Button>
-                    <Button size="sm" variant="plain" color="neutral" onClick={() => { navigateClick(quiz._id,0) }}>
-                      Edit
-                    </Button>
-                    <Button size="sm" variant="soft" color="danger" onClick={() => { deleteClick(quiz) }} >
-                      Delete
-                    </Button>
+                   
                     {/* <RowMenu /> */}
                   </Box>
                 </td>
@@ -179,4 +182,6 @@ const QuizList = () => {
 }
 
 
-export default QuizList
+export default CompletedQuizzes
+
+

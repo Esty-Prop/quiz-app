@@ -24,6 +24,7 @@ import SingleActiveQuiz from './features/userQuiz/singleQuiz/SingleActiveQuiz';
 import RegisterPage from './features/auth/register/RegisterPage';
 import SingleUserInfo from './features/users/view/SingleUserInfo';
 import AllUserQuiz from './features/quiz/view/AllUserQuiz';
+import CompletedQuizzes from './features/userQuiz/list/CompletedQuizzes';
 
 
 
@@ -87,6 +88,8 @@ function App() {
                 </Route>
                 <Route path='userQuizzes' element={<Outlet />}>
                   <Route index element={<UserQuizList />} />
+                  <Route path='completed' element={<CompletedQuizzes/>} />
+
                   <Route path=':id' element={<QuizExecution />} />
                   <Route path='view/:id' element={<SingleActiveQuiz />} />
 

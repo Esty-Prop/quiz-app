@@ -7,9 +7,9 @@ import "./dash-layout.css"
 const DashLayout = () => {
   return (
    <div className="container">
-        <div className="menu">
+        
             <Sidebar />
-        </div>
+       
         <div className="content">
             <Navbar />
             <div className="main-content"><Outlet/></div>

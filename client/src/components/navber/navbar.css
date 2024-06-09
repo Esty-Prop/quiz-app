@@ -1,6 +1,6 @@
 .navbar{
     padding: 10px 20px;
-    background-color: var(--bg);
+    background-color: #F7F8FA;
     box-shadow: 20px 5px 20px rgb(0 0 0 / 10%);
     display: flex;
     align-items: center;
