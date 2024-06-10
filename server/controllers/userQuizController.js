@@ -1,5 +1,6 @@
 const UserQuiz = require("../models/UserQuiz")
 const Quiz = require("../models/Quiz")
+const User = require("../models/User")
 
 const getUserQuizzes = async (req, res) => {
     const userQuizzes = await UserQuiz.find({}, {}).populate('user').populate('quiz').lean()
@@ -36,7 +37,7 @@ const getUserQuizById = async (req, res) => {
 }
 const getAllUserQuizzesByUser = async (req, res) => {
     const { userId } = req.body
-    const userQuizzes = await UserQuiz.find({ user: userId }, {}).populate("quiz").lean().sort({ createdAt: 'asc'})
+    const userQuizzes = await UserQuiz.find({ user: userId }, {}).populate("quiz").lean().sort({ createdAt: 'asc' })
     if (!userQuizzes.length) {
         return res.json({
             error: false,
@@ -207,7 +208,67 @@ const getUserQuizzesByQuiz = async (req, res) => {
             data: null
         })
     }
-    const userQuizzes = await UserQuiz.find({ quiz: quizId }, {}).populate('user').populate('quiz').lean().sort({ score: 'desc'})
+    const userQuizzes = await UserQuiz.find({ quiz: quizId }, {}).populate('user').populate('quiz').lean().sort({ score: 'desc' })
+    if (!userQuizzes.length) {
+        return res.status(400).json({
+            error: true,
+            message: "No userQuizzes",
+            data: null
+        })
+    }
+    res.json({
+        error: false,
+        message: '',
+        data: userQuizzes,
+    })
+}
+const getAdminOverview = async (req, res) => {
+    //cnt users
+    //cnt quizzes
+    //cnt userquizzes
+    // 
+    //list quizzes order by cnt
+    //   cnt users that did the quiz
+    //   avg users score
+    const users = await User.find({ deleted: false }, { username: 1 }).lean()
+    const userCnt = users.length
+    const quizzes = await Quiz.find({ isActive: true }, { title: 1 }).sort({ order: 'desc' }).lean()
+    let userQuizzesCnt = 0
+    // Add task to each action before sending the response 
+    const quizzesWithUserQuizzes = await Promise.all(quizzes.map(async (quiz) => {
+        const userQuizzes = await UserQuiz.find({ quiz: quiz._id }).select(["id", "score", "user"]).lean()
+        return { ...quiz, userQuizzes }
+    }))
+
+    const q = quizzesWithUserQuizzes.map((quiz) => {
+        let avg = 0
+        const cnt = quiz.userQuizzes.length
+        quiz.userQuizzes.forEach(userQuiz => {
+            avg += userQuiz.score
+        });
+        if (cnt)
+            avg = avg / cnt
+        userQuizzesCnt += cnt
+        return { avg, cnt, title: quiz.title, _id: quiz._id }
+    })
+
+
+    res.json({
+        error: false,
+        message: '',
+        data:{userCnt,userQuizzesCnt,quizzesData:{q} },
+    })
+}
+const getUserOverview = async (req, res) => {
+    const { quizId } = req.body
+    if (!quizId) {
+        return res.status(400).json({
+            error: true,
+            message: "quizId is required",
+            data: null
+        })
+    }
+    const userQuizzes = await UserQuiz.find({ quiz: quizId }, {}).populate('user').populate('quiz').lean().sort({ score: 'desc' })
     if (!userQuizzes.length) {
         return res.status(400).json({
             error: true,
@@ -224,4 +285,5 @@ const getUserQuizzesByQuiz = async (req, res) => {
 
 
 
-module.exports = { getAllUserQuizzesByUser, getUserQuizzes, getUserQuizById, addUserQuiz, updateUserQuiz, deleteUserQuiz, addAnswers ,getUserQuizzesByQuiz}
+
+module.exports = { getAdminOverview, getAllUserQuizzesByUser, getUserQuizzes, getUserQuizById, addUserQuiz, updateUserQuiz, deleteUserQuiz, addAnswers, getUserQuizzesByQuiz }
