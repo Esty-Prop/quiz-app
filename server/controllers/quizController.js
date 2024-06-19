@@ -1,4 +1,6 @@
 const Quiz = require("../models/Quiz")
+const UserQuiz = require("../models/UserQuiz")
+
 
 const getQuizzes = async (req, res) => {
     const quizzes = await Quiz.find({}, {}).populate('user').lean()
@@ -13,6 +15,38 @@ const getQuizzes = async (req, res) => {
         error: false,
         message: '',
         data: quizzes,
+    })
+}
+const getQuizzesInfo = async (req, res) => {
+    const quizzes = await Quiz.find({}, {}).populate('user').lean()
+
+    if (!quizzes.length) {
+        return res.status(400).json({
+            error: true,
+            message: "No quizs",
+            data: null
+        })
+    }
+    const quizzesWithUserQuizzes = await Promise.all(quizzes.map(async (quiz) => {
+        const userQuizzes = await UserQuiz.find({ quiz: quiz._id }).select(["id", "score", "user"]).lean()
+        return { ...quiz, userQuizzes }
+    }))
+
+    const q = quizzesWithUserQuizzes.map((quiz) => {
+        let avg = 0
+        const cnt = quiz.userQuizzes.length
+        quiz.userQuizzes.forEach(userQuiz => {
+            avg += userQuiz.score
+        });
+        if (cnt)
+            avg = avg / cnt
+        return { avg, cnt, ...quiz }
+    })
+
+    res.json({
+        error: false,
+        message: '',
+        data: q,
     })
 }
 const getActiveQuizzes = async (req, res) => {
@@ -240,6 +274,7 @@ const getAnswersByQuiz = async (req, res) =>{
     //         return { ...q, options, title }
     //     } return q;
     // })
+    
     const ans = quiz.questions.map(q=>{
         const a = q.options.find(o=>(o.isCorrect))
         console.log(a);
@@ -257,4 +292,5 @@ const getAnswersByQuiz = async (req, res) =>{
 
 
 
-module.exports = { getQuizzes, getQuizById, addQuiz, updateQuiz, deleteQuiz, addQuestion, deleteQuestion, updateQuestion ,getActiveQuizzes,getAnswersByQuestion: getAnswersByQuiz}
+
+module.exports = { getQuizzesInfo,getQuizzes, getQuizById, addQuiz, updateQuiz, deleteQuiz, addQuestion, deleteQuestion, updateQuestion ,getActiveQuizzes,getAnswersByQuestion: getAnswersByQuiz}

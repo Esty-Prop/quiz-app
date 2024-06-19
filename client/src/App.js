@@ -12,7 +12,6 @@ import UsersList from './features/users/list/UsersList';
 import SingleUser from './features/users/view/SingleUser';
 import AddUser from './features/users/add/AddUser';
 import LoginPage from './features/auth/login/LoginPage';
-import QuizUser from './demo/QuizUser';
 import React from 'react';
 import { ConfigProvider, Button, Space, Input, Divider } from 'antd';
 import RequireAuth from './features/auth/ReqireAuth';
@@ -25,6 +24,7 @@ import RegisterPage from './features/auth/register/RegisterPage';
 import SingleUserInfo from './features/users/view/SingleUserInfo';
 import AllUserQuiz from './features/quiz/view/AllUserQuiz';
 import CompletedQuizzes from './features/userQuiz/list/CompletedQuizzes';
+import Dash from './components/dashBord/Dash';
 
 
 
@@ -63,11 +63,10 @@ function App() {
           <Route index element={<h1>Site</h1>} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage/>}/>
-          <Route path='/demo' element={<QuizUser />} />
           <Route element={<PersistsLogin />}>
             <Route element={<RequireAuth allowRoles={["Admin", "User"]} />}>
               <Route path='/dash' element={<DashLayout />}>
-                  <Route index element={<UserDashbord />} />
+                  <Route index element={<Dash />} />
                 <Route element={<RequireAuth allowRoles={["Admin"]} />}>
                   <Route path="users" element={<Outlet />}>
                     <Route index element={<UsersList />} />

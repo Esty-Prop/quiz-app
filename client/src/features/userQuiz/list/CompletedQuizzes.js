@@ -38,12 +38,12 @@ const CompletedQuizzes = () => {
   return (
 
     <div>
-      <Typography color="primary" fontWeight={500} fontSize={30}>
+      {/* <Typography color="primary" fontWeight={500} fontSize={30}>
         My quizzes
       </Typography>
       <Typography color="neutral" fontWeight={200} fontSize={12}>
         Quizzes you delta makefeed jarks if hello for you :)
-      </Typography>
+      </Typography> */}
       <Sheet
         className="SearchAndFilters-mobile"
         sx={{
@@ -87,7 +87,6 @@ const CompletedQuizzes = () => {
           backgroundColor: 'background.surface',
           borderRadius:10
         }}
-
       >
         <Table
           // aria-labelledby="tableTitle"

@@ -8,7 +8,7 @@ import {
   MdLogout,
 } from "react-icons/md"
 import * as React from 'react';
-
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
@@ -212,9 +212,8 @@ const Sidebar = () => {
         <IconButton variant="soft" color="primary" size="sm">
           <BrightnessAutoRoundedIcon />
         </IconButton>
-        <Typography level="title-lg">Acme Co.</Typography>
+        <Typography level="title-lg">QuizWiz</Typography>
       </Box>
-      <Input size="sm" startDecorator={<SearchRoundedIcon />} placeholder="Search" />
       <Box
         sx={{
           minHeight: 0,
@@ -227,6 +226,8 @@ const Sidebar = () => {
           },
         }}
       >
+             
+
         <List
           size="sm"
           sx={{
@@ -236,6 +237,7 @@ const Sidebar = () => {
             '--ListItem-radius': (theme) => theme.vars.radius.sm,
           }}
         >
+           <Divider />
           {menuItems.map(cat => (
           <ListItem key={cat.title}>
           
@@ -256,7 +258,7 @@ const Sidebar = () => {
 
        
           
-         <ListItem nested>
+         {/* <ListItem nested>
             <Toggler
               renderToggle={({ open, setOpen }) => (
                 <ListItemButton onClick={() => setOpen(!open)}>
@@ -285,7 +287,7 @@ const Sidebar = () => {
                 </ListItem>
               </List>
             </Toggler>
-            </ListItem>
+            </ListItem> */}
         </List>
        
         <List
@@ -316,15 +318,15 @@ const Sidebar = () => {
           <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Typography level="title-sm">Overview</Typography>
             <IconButton size="sm">
-              <CloseRoundedIcon />
+              <HelpOutlineIcon />
             </IconButton>
           </Stack>
           <Typography level="body-xs">
             Your team has used 80% of your available space. Need more?
           </Typography>
-          <LinearProgress variant="outlined" value={80} determinate sx={{ my: 1 }} />
-          <Button size="sm" variant="solid">
-            Upgrade plan
+          {/* <LinearProgress variant="outlined" value={80} determinate sx={{ my: 1 }} /> */}
+          <Button size="sm" variant="solid" >
+            Create New Quiz
           </Button>
         </Card>
       </Box>

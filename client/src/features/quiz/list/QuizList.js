@@ -1,5 +1,6 @@
 import Search from "../../../components/search/Search"
-import { useGatAllquizzesQuery, useDeleteQuizMutation } from "../quizzesApiSlice"
+import { useGatAllquizzesInfoQuery, useDeleteQuizMutation } from "../quizzesApiSlice"
+
 import { Link, Navigate, useSearchParams, useNavigate } from "react-router-dom"
 import './Quiz_List.css'
 import * as React from 'react';
@@ -15,7 +16,7 @@ import BlockIcon from '@mui/icons-material/Block';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 const QuizList = () => {
 
-  const { data: quizzesObject, isError, error, isLoading, isSuccess } = useGatAllquizzesQuery()
+  const { data: quizzesObject, isError, error, isLoading, isSuccess } = useGatAllquizzesInfoQuery()
   const [deleteQuiz, { isSuccess: isDeleteSuccess }] = useDeleteQuizMutation()
   const navigate = useNavigate();
   const navigateClick = (_id,i) => {
@@ -152,8 +153,8 @@ const QuizList = () => {
                   <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                     <Avatar size="sm">{quiz.questions.length}</Avatar>
                     <div>
-                      <Typography level="body-xs">activity 80</Typography>
-                      <Typography level="body-xs">avg 60%</Typography>
+                      <Typography level="body-xs">{`activity: ${quiz.cnt} users`} </Typography>
+                      <Typography level="body-xs">{`avg ${quiz.avg}%`}</Typography>
                     </div>
                   </Box>
                 </td>

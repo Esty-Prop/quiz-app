@@ -8,6 +8,12 @@ const quizzesApiSlice = apiSlice.injectEndpoints({
             }),
             providesTags:['quizzes']
         }),
+        gatAllquizzesInfo:build.query({
+            query:()=>({
+                url:'/api/quizzes/info'
+            }),
+            providesTags:['quizzes']
+        }),
         gatAllActivequizzes:build.query({
             query:()=>({
                 url:'/api/quizzes/active'
@@ -73,4 +79,4 @@ const quizzesApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const {useGetAnsMutation,useGatAllquizzesQuery,useAddQuizMutation,useDeleteQuizMutation,useUpdateQuizMutation,useAddQuestionMutation,useDeleteQuestionMutation,useUpdateQuestionMutation,useGatAllActivequizzesQuery} = quizzesApiSlice
+export const {useGatAllquizzesInfoQuery,useGetAnsMutation,useGatAllquizzesQuery,useAddQuizMutation,useDeleteQuizMutation,useUpdateQuizMutation,useAddQuestionMutation,useDeleteQuestionMutation,useUpdateQuestionMutation,useGatAllActivequizzesQuery} = quizzesApiSlice

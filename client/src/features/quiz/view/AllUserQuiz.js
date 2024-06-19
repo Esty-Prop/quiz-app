@@ -32,15 +32,15 @@ import PersonIcon from '@mui/icons-material/Person';
 import useAvatarColor from '../../../hooks/useAvatarColor';
 
 const AllUserQuiz = () => {
-  const {  quizId } = useParams()
+  const { quizId } = useParams()
   const [getQuizzes, { data: UserQuizzesObject, isError, error, isLoading, isSuccess }] = useGetAllUserQuizByQuizMutation()
 
   const [searchParams] = useSearchParams()
   const q = searchParams.get("q")
   const { _id, username, firstName, lastName, email, roles } = useAuth()
-  let classNameHolder = ["avatar","orangeAvatar","purpleAvatar"]
-                  
-                  
+  let classNameHolder = ["avatar", "orangeAvatar", "purpleAvatar"]
+
+
 
   useEffect(() => {
     console.log(quizId);
@@ -49,10 +49,10 @@ const AllUserQuiz = () => {
 
     }
   }, [quizId])
-  const AvatarColor=(name)=> {
+  const AvatarColor = (name) => {
     return useAvatarColor(name)
   }
-  
+
   if (!isSuccess) return <h4> Loading ...</h4>
   if (isError) return <h1>{JSON.stringify(error)}</h1>
   const quizzes = UserQuizzesObject.data
@@ -61,7 +61,7 @@ const AllUserQuiz = () => {
   if (!quizzes) return <h1>{"Not found"}</h1>
   return (
     <div>
-      
+
       <Typography sx={{ m: 2, bgcolor: '' }} level="h2">{quizzes[0].quiz.title}</Typography>
       <Typography sx={{ m: 2, bgcolor: '' }} level="body-md">see all users that were takon the quiz </Typography>
 
@@ -121,7 +121,7 @@ const AllUserQuiz = () => {
         >
           <thead >
             <tr >
-              <th style={{ width:240, padding: '12px 20px' }}>User</th>
+              <th style={{ width: 240, padding: '12px 20px' }}>User</th>
               <th style={{ width: 140, padding: '12px 20x' }}>Score</th>
               <th style={{ width: 240, padding: '12px 20x' }}>Answers</th>
               <th style={{ width: 140 }}></th>
@@ -132,9 +132,9 @@ const AllUserQuiz = () => {
               <tr key={quiz.id} style={{ backgroundColor: 'white' }}>
 
                 <td>
-                <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-                 
-                    <Avatar {...AvatarColor((`${quiz.user.username} `))}  size="sm" >{quiz.user.firstName?.charAt(0)+ quiz.user.lastName?.charAt(0)}</Avatar>
+                  <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+
+                    <Avatar {...AvatarColor((`${quiz.user.username} `))} size="sm" >{quiz.user.firstName?.charAt(0) + quiz.user.lastName?.charAt(0)}</Avatar>
                     <div>
                       <Typography level="body-xs">{`${quiz.user.firstName} ${quiz.user.lastName}`}</Typography>
                       <Typography level="body-xs">{quiz.user.email}</Typography>
@@ -156,10 +156,9 @@ const AllUserQuiz = () => {
                       textAlign: "center"
                     }}
                     startDecorator={
-                      {
-                        true: < EmojiEventsIcon />,
-                        false: <EmojiEventsIcon />
-                      }[quiz.answers[0]?.isCorrect]
+                      
+                        <EmojiEventsIcon />
+                      
                     }
                     color={
                       {
@@ -185,12 +184,12 @@ const AllUserQuiz = () => {
                         {
                           true: <CheckRoundedIcon />,
                           false: <CloseIcon />
-                        }[quiz.answers[0]?.isCorrect]
+                        }[quiz.answers[index]?.isCorrect]
                       }
                       color={
                         {
                           true: 'primary',
-                        }[quiz.answers[0]?.isCorrect]
+                        }[quiz.answers[index]?.isCorrect]
                       }
                     >
                       <Typography level="body-xs">{ans.ques}</Typography>

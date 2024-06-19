@@ -145,10 +145,8 @@ const SingleUserInfo = () => {
                       textAlign: "center"
                     }}
                     startDecorator={
-                      {
-                        true: < EmojiEventsIcon />,
-                        false: <EmojiEventsIcon />
-                      }[quiz.answers[0]?.isCorrect]
+                      < EmojiEventsIcon />
+                        
                     }
                     color={
                       {
@@ -174,12 +172,12 @@ const SingleUserInfo = () => {
                         {
                           true: <CheckRoundedIcon />,
                           false: <CloseIcon />
-                        }[quiz.answers[0]?.isCorrect]
+                        }[quiz.answers[index]?.isCorrect]
                       }
                       color={
                         {
                           true: 'primary',
-                        }[quiz.answers[0]?.isCorrect]
+                        }[quiz.answers[index]?.isCorrect]
                       }
                     >
                       <Typography level="body-xs">{ans.ques}</Typography>

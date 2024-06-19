@@ -8,6 +8,13 @@ const userQuizApiSlice = apiSlice.injectEndpoints({
             }),
             providesTags:['userQuiz']
         }),
+        gatAdminOverview:build.query({
+            query:()=>({
+                url:'/api/userQuizzes/overview'
+            }),
+            providesTags:['userQuiz']
+
+        }),
         gatUserquizById:build.query({
             query:(id)=>({
                 url:`/api/userQuizzes/${id}`
@@ -87,4 +94,4 @@ const userQuizApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const {useGetAllUserQuizByQuizMutation,useGetAllUserQuizByUserMutation,useGatAllUserquizzesQuery,useAddUserQuizMutation,useDeleteUserQuizMutation,useUpdateUserQuizMutation,useAddAnswersMutation,useGatUserquizByIdQuery} = userQuizApiSlice
+export const {useGatAdminOverviewQuery,useGetAllUserQuizByQuizMutation,useGetAllUserQuizByUserMutation,useGatAllUserquizzesQuery,useAddUserQuizMutation,useDeleteUserQuizMutation,useUpdateUserQuizMutation,useAddAnswersMutation,useGatUserquizByIdQuery} = userQuizApiSlice

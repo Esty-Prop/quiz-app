@@ -235,6 +235,7 @@ const getAdminOverview = async (req, res) => {
     const quizzes = await Quiz.find({ isActive: true }, { title: 1 }).sort({ order: 'desc' }).lean()
     let userQuizzesCnt = 0
     // Add task to each action before sending the response 
+    
     const quizzesWithUserQuizzes = await Promise.all(quizzes.map(async (quiz) => {
         const userQuizzes = await UserQuiz.find({ quiz: quiz._id }).select(["id", "score", "user"]).lean()
         return { ...quiz, userQuizzes }
@@ -256,19 +257,20 @@ const getAdminOverview = async (req, res) => {
     res.json({
         error: false,
         message: '',
-        data:{userCnt,userQuizzesCnt,quizzesData:{q} },
+        data:{userCnt,userQuizzesCnt,quizzesData:[...q] },
     })
 }
 const getUserOverview = async (req, res) => {
-    const { quizId } = req.body
-    if (!quizId) {
+    const { userId } = req.body
+
+    if (!userId) {
         return res.status(400).json({
             error: true,
             message: "quizId is required",
             data: null
         })
     }
-    const userQuizzes = await UserQuiz.find({ quiz: quizId }, {}).populate('user').populate('quiz').lean().sort({ score: 'desc' })
+    const userQuizzes = await UserQuiz.find({ user: userId }, {}).lean().sort({ score: 'desc' })
     if (!userQuizzes.length) {
         return res.status(400).json({
             error: true,
@@ -276,14 +278,22 @@ const getUserOverview = async (req, res) => {
             data: null
         })
     }
+    let avg = 0
+    const cnt = userQuizzes.length
+
+    userQuizzes.forEach(userQuiz => {
+        avg += userQuiz.score
+    });
+    if (cnt)
+        avg = avg / userQuizzes.length
     res.json({
         error: false,
         message: '',
-        data: userQuizzes,
+        data: {avg:Math.floor(avg),cnt},
     })
 }
 
 
 
 
-module.exports = { getAdminOverview, getAllUserQuizzesByUser, getUserQuizzes, getUserQuizById, addUserQuiz, updateUserQuiz, deleteUserQuiz, addAnswers, getUserQuizzesByQuiz }
+module.exports = { getUserOverview,getAdminOverview, getAllUserQuizzesByUser, getUserQuizzes, getUserQuizById, addUserQuiz, updateUserQuiz, deleteUserQuiz, addAnswers, getUserQuizzesByQuiz }
