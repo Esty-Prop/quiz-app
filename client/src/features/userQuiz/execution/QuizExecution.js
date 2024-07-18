@@ -7,7 +7,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { FormControlLabel, RadioGroup, Radio, Typography, Button, Paper, MobileStepper, Box } from '@mui/material';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { useTheme } from '@mui/material/styles';
+import { useTheme,createTheme } from '@mui/material/styles';
 import QuizFeedback from "./QuizFeedback";
 import useAuth from "../../../hooks/useAuth";
 import { CircularProgress, Card, Divider } from '@mui/material';
@@ -66,12 +66,12 @@ const QuizExecution = () => {
 
         <div className="quiz">
             <div className="quiz-container">
-<h3 className="quiz-name">                {quiz.title}
+<h3 >                {quiz.title}
 </h3>
                 {currentQuestionIndex < quiz.questions.length ? (
                     <div className="question-container">
                         <h6 className="question-number">Question {currentQuestionIndex + 1}</h6>
-                        <h3 className="question-txt">{`${quiz.questions[currentQuestionIndex].title}?`}</h3>
+                        <h3 className="question-txt">{`${quiz.questions[currentQuestionIndex].title}`}</h3>
                         <div className="options-container">
                             <ul className="options-list">
                                 {quiz?.questions[currentQuestionIndex]?.options.map((option, index) => (
@@ -102,6 +102,7 @@ const QuizExecution = () => {
                     </div>
                 ) : (
                     <div className="quiz-completed">
+                        
                         <h2>Quiz Completed!</h2>
                         <p className="final-score">Your Score: {score} out of {quiz.questions.length}</p>
                         <QuizFeedback values={values} />

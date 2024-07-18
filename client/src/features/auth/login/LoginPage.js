@@ -17,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Paper } from "@mui/material";
+import { createStyles } from "@mui/material/styles";
 
 const LoginPage = () => {
   const [login, { isError, error, isLoading, isSuccess, data }] = useLoginMutation()
@@ -47,7 +48,14 @@ const LoginPage = () => {
 
   };
 
-
+  const styles = (theme) => createStyles({
+    input: {
+        '&::placeholder': {
+          fontStyle: "Montserrat",
+        },
+      },
+    });
+    
   return (
     <div className="login-page">
       <Paper></Paper>
@@ -64,9 +72,9 @@ const LoginPage = () => {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography  variant="h5">
+          <Typography  fontFamily="Montserrat" variant="h5">
             Sign in
-          </Typography>
+          </Typography >
           <Box component="form" onSubmit={handleSubmit1} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
@@ -76,7 +84,24 @@ const LoginPage = () => {
               label="Username"
               name="username"
               autoComplete="username"
+              fontFamily="Montserrat"
               autoFocus
+              sx={{
+                '& .MuiInputBase-input': {
+                  fontFamily: 'Montserrat',
+                },
+                '& .MuiInputLabel-root': {
+                  fontFamily: 'Montserrat',
+                },
+                '& .MuiInputBase-input::placeholder': {
+                  fontFamily: 'Montserrat',
+                }
+              }}
+              InputProps={{
+                style: { fontFamily: 'Montserrat' },
+              }}
+              InputLabelProps={{
+                style: { fontFamily: 'Montserrat' },}}
             />
             <TextField
               margin="normal"
@@ -87,6 +112,22 @@ const LoginPage = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              sx={{
+                '& .MuiInputBase-input': {
+                  fontFamily: 'Montserrat',
+                },
+                '& .MuiInputLabel-root': {
+                  fontFamily: 'Montserrat',
+                },
+                '& .MuiInputBase-input::placeholder': {
+                  fontFamily: 'Montserrat',
+                }
+              }}
+              InputProps={{
+                style: { fontFamily: 'Montserrat' },
+              }}
+              InputLabelProps={{
+                style: { fontFamily: 'Montserrat' },}}
             />
             {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -96,7 +137,7 @@ const LoginPage = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2 ,fontFamily:"Montserrat"}}
             >
               Log In
             </Button>
@@ -104,7 +145,7 @@ const LoginPage = () => {
               
               <Grid item>
               
-              <Typography color={"red"} component="" variant="body1">
+              <Typography fontFamily="Montserrat" color={"red"} component="" variant="body1">
               {error && error.data?.message}
           </Typography>
                 <Link to={`/register`} variant="body2">

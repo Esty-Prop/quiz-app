@@ -13,7 +13,7 @@ const DashLayout = () => {
         <div className="content">
             <Navbar />
             <div className="main-content"><Outlet/></div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     </div>
   )

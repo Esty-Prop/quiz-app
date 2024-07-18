@@ -29,6 +29,7 @@ input{
     border-radius: 5px;
     border: none;
     width: 50%;
+    font-family: "Montserrat";
 }
 .add-quiz-form button,.add-ques-form button{
     width: 100%;
@@ -38,6 +39,8 @@ input{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family:"Montserrat"
+
 }
 input[type="radio"] {
     /* ...existing styles */

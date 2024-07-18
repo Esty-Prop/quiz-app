@@ -22,7 +22,8 @@ thead{
     cursor: pointer;
     display: flex;
     justify-content: space-between;
- 
+    font-family:"Montserrat"
+
 }
 
 .quizzes-list-table{

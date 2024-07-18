@@ -44,7 +44,7 @@ const AddQuestion = () => {
                     required={true}
                     /><br />
                 <div className="add-ques-form-option">
-                    <label className='question-lable'>#1 answer</label><br />
+                    <label className='question-lable'> answer #1</label><br />
                     <input
                         type="text"
                         name="option1"
@@ -60,10 +60,10 @@ const AddQuestion = () => {
                         required
 
                     ></input>
-                    <label className='radio-label' htmlFor='option1'><MdCheck/>תשובה נכונה</label>
+                    <label className='radio-label' htmlFor='option1'><MdCheck/>correct </label>
                 </div>
                 <div className="add-ques-form-option">
-                    <label className='question-lable'> #2 answer</label><br />
+                    <label className='question-lable'> answer  #2</label><br />
                     <input
                         type="text"
                         name="option2"
@@ -79,10 +79,10 @@ const AddQuestion = () => {
                         value="1" // Set the value to "true"
                         required
                     ></input>
-                    <label className='radio-label' htmlFor='option2'><MdCheck/>תשובה נכונה </label>
+                    <label className='radio-label' htmlFor='option2'><MdCheck/> correct </label>
                 </div>
                 <div className="add-ques-form-option">
-                    <label className='question-lable'> #3 answer</label><br />
+                    <label className='question-lable'> answer #3 </label><br />
                     <input
                         type="text"
                         name="option3"
@@ -97,7 +97,7 @@ const AddQuestion = () => {
                                                 value="2" // Set the value to "true"
                         required
                     ></input>
-                    <label className='radio-label' htmlFor='option3'><MdCheck/>תשובה נכונה </label>
+                    <label className='radio-label' htmlFor='option3'><MdCheck/> correct </label>
                 </div>
 
                 <button>Add new question</button>

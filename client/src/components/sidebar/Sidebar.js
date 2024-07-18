@@ -106,6 +106,7 @@ const Sidebar = () => {
           path: "/dash",
           icon: <SpaceDashboardIcon />,
         },
+
         {
           title: "Todo",
           path: "/dash/userQuizzes",
@@ -116,59 +117,31 @@ const Sidebar = () => {
           path: "/dash/userQuizzes/completed",
           icon: <QuizIcon />,
         },
+        {
+          title: "Profile",
+          path: "/dash/profile",
+          icon: <ManageAccountsIcon />,
+        },
       ]
     
 
   const menuItems = roles === "Admin" ? AdminMenuItems : userMenuItems
-  function Toggler({
-    defaultExpanded = false,
-    renderToggle,
-    children,
-  }: {
-    defaultExpanded?: boolean;
-    children: React.ReactNode;
-    renderToggle: (params: {
-      open: boolean;
-      setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    }) => React.ReactNode;
-  }) {
-    const [open, setOpen] = React.useState(defaultExpanded);
-    return (
-      <React.Fragment>
-        {renderToggle({ open, setOpen })}
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateRows: open ? '1fr' : '0fr',
-            transition: '0.2s ease',
-            '& > *': {
-              overflow: 'hidden',
-            },
-          }}
-        >
-          {children}
-        </Box>
-      </React.Fragment>
-    );
-  }
   const loguotClick = () => {
     logout()
   }
   let c = AvatarColor((`${username} `))
   console.log(c);
-  return (
-       <Sheet
+
+  
+  return (<Sheet
       className="Sidebar"
       sx={{
         position: { xs: 'fixed', md: 'sticky' },
-        transform: {
-          xs: 'translateX(calc(100% * (var(--SideNavigation-slideIn, 0) - 1)))',
-          md: 'none',
-        },
+       
         transition: 'transform 0.4s, width 0.4s',
-        zIndex: 10000,
+        zIndex: 30,
         height: '100dvh',
-        width: 'var(--Sidebar-width)',
+        width: {md:'250px',xs:'200px', lg:'250px' },
         top: 0,
         m:0,
         p: 2,
@@ -180,16 +153,6 @@ const Sidebar = () => {
         borderColor: 'divider',
       }}
     >
-      <GlobalStyles
-        styles={(theme) => ({
-          ':root': {
-            '--Sidebar-width': '220px',
-            [theme.breakpoints.up('lg')]: {
-              '--Sidebar-width': '240px',
-            },
-          },
-        })}
-      />
       <Box
         className="Sidebar-overlay"
         sx={{
@@ -212,7 +175,7 @@ const Sidebar = () => {
         <IconButton variant="soft" color="primary" size="sm">
           <BrightnessAutoRoundedIcon />
         </IconButton>
-        <Typography level="title-lg">QuizWiz</Typography>
+        <Typography   level="title-lg"  fontFamily="Montserrat">QuizWiz</Typography>
       </Box>
       <Box
         sx={{
@@ -244,7 +207,7 @@ const Sidebar = () => {
               <ListItemButton onClick={()=>{navigateClick(cat.path)}} sx={{pt:1,pb:1,}}>
                 {cat.icon}
               <ListItemContent>
-                <Typography level="title-sm">{cat.title}</Typography>
+                <Typography level="title-sm" fontFamily="Montserrat">{cat.title}</Typography>
               </ListItemContent>
               {cat.title ==='Users' && <Chip size="sm" color="primary" variant="solid">
                 4
@@ -252,62 +215,8 @@ const Sidebar = () => {
             </ListItemButton>
           </ListItem>
         ))}
-         
-
-      
-
-       
-          
-         {/* <ListItem nested>
-            <Toggler
-              renderToggle={({ open, setOpen }) => (
-                <ListItemButton onClick={() => setOpen(!open)}>
-                  <AssignmentRoundedIcon />
-                  <ListItemContent>
-                    <Typography level="title-sm">Tasks</Typography>
-                  </ListItemContent>
-                  <KeyboardArrowDownIcon
-                    sx={{ transform: open ? 'rotate(180deg)' : 'none' }}
-                  />
-                </ListItemButton>
-              )}
-            >
-              <List sx={{ gap: 0.5 }}>
-                <ListItem sx={{ mt: 0.5 }}>
-                  <ListItemButton>All tasks</ListItemButton>
-                </ListItem>
-                <ListItem>
-                  <ListItemButton>Backlog</ListItemButton>
-                </ListItem>
-                <ListItem>
-                  <ListItemButton>In progress</ListItemButton>
-                </ListItem>
-                <ListItem>
-                  <ListItemButton>Done</ListItemButton>
-                </ListItem>
-              </List>
-            </Toggler>
-            </ListItem> */}
         </List>
        
-        <List
-          size="sm"
-          sx={{
-            mt: 'auto',
-            flexGrow: 0,
-            '--ListItem-radius': (theme) => theme.vars.radius.sm,
-            '--List-gap': '8px',
-            mb: 2,
-          }}
-        >
-      
-          <ListItem>
-            <ListItemButton>
-              <SettingsRoundedIcon />
-              Settings
-            </ListItemButton>
-          </ListItem>
-        </List>
         <Card
           invertedColors
           variant="soft"
@@ -321,21 +230,18 @@ const Sidebar = () => {
               <HelpOutlineIcon />
             </IconButton>
           </Stack>
-          <Typography level="body-xs">
-            Your team has used 80% of your available space. Need more?
+          <Typography level="body-xs" fontFamily="Montserrat">
+            
           </Typography>
-          {/* <LinearProgress variant="outlined" value={80} determinate sx={{ my: 1 }} /> */}
-          <Button size="sm" variant="solid" >
-            Create New Quiz
-          </Button>
+         
         </Card>
       </Box>
       <Divider />
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
         <Avatar sx={{bgcolor:c}}>{firstName.charAt(0)+lastName.charAt(0)}</Avatar>
         <Box sx={{ minWidth: 0, flex: 1 }}>
-          <Typography level="title-sm">{`${firstName} ${lastName}`}</Typography>
-          <Typography level="body-xs">{email}</Typography>
+          <Typography level="title-sm" fontFamily="Montserrat">{`${firstName} ${lastName}`}</Typography>
+          <Typography level="body-xs" fontFamily="Montserrat">{email}</Typography>
         </Box>
         <IconButton onClick={loguotClick} size="sm" variant="plain" color="neutral">
           <LogoutRoundedIcon />

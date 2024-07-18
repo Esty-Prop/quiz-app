@@ -95,7 +95,7 @@ const QuestionList = () => {
               <tr key={quiz.id}>
 
                 <td>
-                  <Typography level="body-md">{quiz.title}</Typography>
+                  <Typography fontFamily="Montserrat" level="body-md">{quiz.title}</Typography>
                 </td>
 
                 <td>

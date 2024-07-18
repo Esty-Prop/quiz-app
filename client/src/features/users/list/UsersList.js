@@ -48,10 +48,10 @@ const UsersList = () => {
   return (
     <div className="users-list">
       <div>
-      <Typography color="primary" fontWeight={500} fontSize={30}>
+      <Typography color="primary" fontWeight={500} fontFamily="Montserrat"fontSize={30}>
         Users
       </Typography>
-      <Typography color="neutral" fontWeight={200} fontSize={12}>
+      <Typography color="neutral" fontWeight={200} fontFamily="Montserrat" fontSize={12}>
         see and manage all uey users
       </Typography>
       <Sheet
@@ -66,17 +66,9 @@ const UsersList = () => {
 
         <Search placeholder="Search by name or Username" />
 
-        {/* <IconButton
-          size="sm"
-          variant="outlined"
-          color="neutral"
-          // onClick={() => setOpen(true)}
-        >
-          <FilterAltIcon />
-        </IconButton> */}
-
       </Sheet>
       <Sheet
+       fontFamily={"Montserrat"}
         sx={{
           '--TableCell-height': '40px',
           // the number is the amount of the header rows.
@@ -110,55 +102,11 @@ const UsersList = () => {
           aria-labelledby="tableTitle"
           stickyHeader
           hoverRow
-        // sx={{
-        //   '--TableCell-headBackground': 'var(--joy-palette-background-level1)',
-        //   '--Table-headerUnderlineThickness': '1px',
-        //   '--TableRow-hoverBackground': 'var(--joy-palette-background-level1)',
-        //   '--TableCell-paddingY': '4px',
-        //   '--TableCell-paddingX': '8px',
-        // }}
+     
         >
           <thead style={{ backgroundColor: 'red' }}>
             <tr>
-              {/* <th style={{ width: 48, textAlign: 'center', padding: '12px 6px' }}>
-              <Checkbox
-                  size="sm"
-                  indeterminate={
-                    selected.length > 0 && selected.length !== rows.length
-                  }
-                  checked={selected.length === rows.length}
-                  onChange={(event) => {
-                    setSelected(
-                      event.target.checked ? rows.map((row) => row.id) : [],
-                    );
-                  }}
-                  color={
-                    selected.length > 0 || selected.length === rows.length
-                      ? 'primary'
-                      : undefined
-                  }
-                  sx={{ verticalAlign: 'text-bottom' }}
-                />
-              </th> */}
-              {/*<th style={{ width: 120, padding: '12px 6px' }}>
-                 <Link
-                  underline="none"
-                  color="primary"
-                  component="button"
-                //   onClick={() => setOrder(order === 'asc' ? 'desc' : 'asc')}
-                  fontWeight="lg"
-                  endDecorator={<ArrowDropDownIcon />}
-                  sx={{
-                    '& svg': {
-                      transition: '0.2s',
-                    //   transform:
-                    //     order === 'desc' ? 'rotate(0deg)' : 'rotate(180deg)',
-                    },
-                  }}
-                >
-                  Invoice
-                </Link> 
-              </th>*/}
+              
               <th style={{ width: 140, padding: '12px 6px' }}>Username</th>
               <th style={{ width: 100, padding: '12px 6px' }}>Roles</th>
               <th style={{ width: 260, padding: '12px 6px' }}>details</th>
@@ -166,33 +114,18 @@ const UsersList = () => {
               <th style={{ width: 350 }}></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {filteredData.map((quiz) => (
               <tr key={quiz.id}>
-                {/*<td style={{ textAlign: 'center', width: 120 }}>
-                  <Checkbox
-                    size="sm"
-                    // checked={selected.includes(row.id)}
-                    // color={selected.includes(row.id) ? 'primary' : undefined}
-                    // onChange={(event) => {
-                    //   setSelected((ids) =>
-                    //     event.target.checked
-                    //       ? ids.concat(row.id)
-                    //       : ids.filter((itemId) => itemId !== row.id),
-                    //   );
-                    // }}
-                    slotProps={{ checkbox: { sx: { textAlign: 'left' } } }}
-                    sx={{ verticalAlign: 'text-bottom' }}
-                  /> 
-                </td>*/}
                 <td>
-                  <Typography level="body-xs">{quiz.username}</Typography>
+                  <Typography fontSize={'14px'}  fontFamily={"Montserrat"} level="body-xs">{quiz.username}</Typography>
                 </td>
                
-                <td>
+                <td >
                   <Chip
                     variant="soft"
                     size="sm"
+                    
                     startDecorator={
                       {
                         true: <CheckRoundedIcon />,
@@ -214,17 +147,17 @@ const UsersList = () => {
                   <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                     <Avatar  {...AvatarColor((`${quiz.username} `))} size="sm">{quiz.firstName.charAt(0)+ quiz.lastName.charAt(0)}</Avatar>
                     <div>
-                      <Typography level="body-xs">{`${quiz.firstName} ${quiz.lastName}`}</Typography>
-                      <Typography level="body-xs">{quiz.email}</Typography>
+                      <Typography  fontFamily={"Montserrat"} level="body-xs">{`${quiz.firstName} ${quiz.lastName}`}</Typography>
+                      <Typography  fontFamily={"Montserrat"} level="body-xs">{quiz.email}</Typography>
                     </div>
                   </Box>
                 </td>
                 <td>
-                  <Typography level="body-xs"> {quiz.createdAt?.toString().slice(0, 10)}</Typography>
+                  <Typography  fontFamily={"Montserrat"} level="body-xs"> {quiz.createdAt?.toString().slice(0, 10)}</Typography>
                 </td>
                 <td>
                   <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-                    <Button size="sm" variant="outlined" color="primary" onClick={() => { navigateClick(quiz._id,1) }}>
+                    <Button  fontFamily={"Montserrat"} size="sm" variant="outlined" color="primary" onClick={() => { navigateClick(quiz._id,1) }}>
                       View user quizzes
                     </Button>
                     <Button size="sm" variant="plain" color="neutral" onClick={() => { navigateClick(quiz._id,0) }}>
@@ -241,50 +174,8 @@ const UsersList = () => {
           </tbody>
         </Table>
       </Sheet></div>
-      <div className="users-list-top">
-        <Search placeholder="Search for a user..." />
-        <Link className="users-list-add-button" to="/dash/users/add">add user</Link>
-      </div>
-      <table className="users-list-table">
-        <thead>
-          <tr>
-            <td>name</td>
-            <td>username </td>
-            <td>email</td>
-            <td>createdAt</td>
-            <td>roles</td>
-            {/* <td>פעיל</td> */}
-          </tr>
-        </thead>
-        <tbody>
-          {filteredData.map((user) => (
-            <tr key={user.id} className="users-list-item" >
-              <td>
-                <div className="users-list-user">
-                  {`${user.firstName} ${user.lastName}`}
-                </div>
-              </td>
-              <td>{user.username}</td>
-
-              <td>{user.email}</td>
-
-              <td>{user.createdAt?.toString().slice(0, 10)}</td>
-              <td>{user.roles === "Admin" ? "מנהל" : "משתמש"}</td>
-              {/* <td>{user.active ? "כן" : "לא"}</td> */}
-              <td>
-                <div className="users-list-buttons">
-                  <Link className='users-list-button users-list-view' to={`/dash/users/${user._id}`}>
-                    view                  </Link>
-                  <button onClick={() => deleteClick(user)} className="users-list-button users-list-delete">
-                    delete
-                  </button>
-
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      
+      
     </div>
   );
 }

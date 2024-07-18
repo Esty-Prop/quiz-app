@@ -52,8 +52,7 @@ const SingleUser = () => {
           <input name="_id" defaultValue={user._id} type="hidden" />
           <label> username</label>
           <input readOnly={true} type="text" name="username" defaultValue={user.username} />
-          <label>password</label>
-          <input type="password" name="password" />
+  
           <label>name </label>
           <input type="text" name="firstName" placeholder="name " defaultValue={user.firstName} />
           <label>משפחה </label>
@@ -69,7 +68,7 @@ const SingleUser = () => {
           </select>
           <label>active?</label>
           <select name="active" id="active">
-            <option value={true} selected={user.active}>you</option>
+            <option value={true} selected={user.active}>yes</option>
             <option value={false} selected={!user.active}>no</option>
           </select>
           <button>update user</button>

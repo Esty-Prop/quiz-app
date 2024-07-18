@@ -285,7 +285,7 @@ const getUserOverview = async (req, res) => {
         avg += userQuiz.score
     });
     if (cnt)
-        avg = avg / userQuizzes.length
+        avg = Math.floor(avg / userQuizzes.length)
     res.json({
         error: false,
         message: '',

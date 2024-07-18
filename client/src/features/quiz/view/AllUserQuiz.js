@@ -62,8 +62,8 @@ const AllUserQuiz = () => {
   return (
     <div>
 
-      <Typography sx={{ m: 2, bgcolor: '' }} level="h2">{quizzes[0].quiz.title}</Typography>
-      <Typography sx={{ m: 2, bgcolor: '' }} level="body-md">see all users that were takon the quiz </Typography>
+      <Typography sx={{ m: 2, bgcolor: '' }} level="h2" fontFamily="Montserrat">{quizzes[0].quiz.title}</Typography>
+      <Typography sx={{ m: 2, bgcolor: '' }} level="body-md" fontFamily="Montserrat" >see all users that were takon the quiz </Typography>
 
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
         <Chip color='success' variant="soft" startDecorator={<SportsScoreIcon />}>
@@ -136,8 +136,8 @@ const AllUserQuiz = () => {
 
                     <Avatar {...AvatarColor((`${quiz.user.username} `))} size="sm" >{quiz.user.firstName?.charAt(0) + quiz.user.lastName?.charAt(0)}</Avatar>
                     <div>
-                      <Typography level="body-xs">{`${quiz.user.firstName} ${quiz.user.lastName}`}</Typography>
-                      <Typography level="body-xs">{quiz.user.email}</Typography>
+                      <Typography level="body-xs" fontFamily="Montserrat">{`${quiz.user.firstName} ${quiz.user.lastName}`}</Typography>
+                      <Typography level="body-xs" fontFamily="Montserrat">{quiz.user.email}</Typography>
                     </div>
                   </Box>                </td>
 
@@ -166,7 +166,7 @@ const AllUserQuiz = () => {
                       }[quiz.answers[0]?.isCorrect]
                     }
                   >
-                    <Typography level="body-sm">{'score ' + quiz.score}</Typography>
+                    <Typography fontFamily="Montserrat" level="body-sm">{'score ' + quiz.score}</Typography>
                   </Chip>
                 </td>
                 <td>
@@ -192,8 +192,8 @@ const AllUserQuiz = () => {
                         }[quiz.answers[index]?.isCorrect]
                       }
                     >
-                      <Typography level="body-xs">{ans.ques}</Typography>
-                      <Typography level="title-sm">{ans.answer}</Typography>
+                      <Typography level="body-xs" fontFamily="Montserrat">{ans.ques}</Typography>
+                      <Typography level="title-sm" fontFamily="Montserrat">{ans.answer}</Typography>
 
                     </Chip>
 

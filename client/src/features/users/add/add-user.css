@@ -21,6 +21,7 @@
     border: 2px solid var(--stroke);
     border-radius: 5px;
     margin-bottom: 30px;
+    font-family:"Montserrat"
   }
   
   .add-user-form input, .add-user-form select {
@@ -39,4 +40,6 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family:"Montserrat"
+
   }

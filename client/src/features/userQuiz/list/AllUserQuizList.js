@@ -43,10 +43,10 @@ const AllUserQuizList = () => {
     return (
       <div className="users-list">
         <div>
-        <Typography color="primary" fontWeight={500} fontSize={30}>
+        <Typography color="primary"  fontFamily="Montserrat" fontWeight={500} fontSize={30}>
           Users quizzes
         </Typography>
-        <Typography color="neutral" fontWeight={200} fontSize={12}>
+        <Typography color="neutral" fontFamily="Montserrat" fontWeight={200} fontSize={12}>
           see and manage all uey users
         </Typography>
         <Sheet
@@ -115,7 +115,7 @@ const AllUserQuizList = () => {
                 <tr key={quiz.id}>
             
                   <td>
-                    <Typography level="body-xs">{quiz.user.username}</Typography>
+                    <Typography level="body-xs" fontFamily="Montserrat">{quiz.user.username}</Typography>
                   </td>
                  
                   <td>
@@ -131,19 +131,19 @@ const AllUserQuizList = () => {
                     </Chip>
                   </td>
                   <td>
-                    <Typography level="body-xs"> {quiz.quiz?.title}</Typography>
+                    <Typography level="body-xs" fontFamily="Montserrat"> {quiz.quiz?.title}</Typography>
                   </td>
                   <td>
                     <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                       <Avatar  {...AvatarColor((`${quiz.user.username} `))} size="sm">{quiz.user.firstName.charAt(0)+ quiz.user.lastName.charAt(0)}</Avatar>
                       <div>
-                        <Typography level="body-xs">{`${quiz.user.firstName} ${quiz.user.lastName}`}</Typography>
-                        <Typography level="body-xs">{quiz.user.email}</Typography>
+                        <Typography level="body-xs" fontFamily="Montserrat">{`${quiz.user.firstName} ${quiz.user.lastName}`}</Typography>
+                        <Typography level="body-xs" fontFamily="Montserrat">{quiz.user.email}</Typography>
                       </div>
                     </Box>
                   </td>
                   <td>
-                    <Typography level="body-xs"> {quiz.createdAt?.toString().slice(0, 10)}</Typography>
+                    <Typography level="body-xs" fontFamily="Montserrat"> {quiz.createdAt?.toString().slice(0, 10)}</Typography>
                   </td>
                   <td>
                     <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>

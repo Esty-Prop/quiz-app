@@ -25,60 +25,69 @@ import SingleUserInfo from './features/users/view/SingleUserInfo';
 import AllUserQuiz from './features/quiz/view/AllUserQuiz';
 import CompletedQuizzes from './features/userQuiz/list/CompletedQuizzes';
 import Dash from './components/dashBord/Dash';
-
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './app/theme'
 
 
 function App() {
   return (
-    //   <ConfigProvider
-    //   theme={{
-    //     token: {
-    //       colorPrimary:'#00b96b',       
-    //       algorithm: true, // Enable algorithm
-    //       colorText:'white',
-    //       fontFamily: "Noto Sans Hebrew", 
-    //       colorTextDescription:"#00b96b"
-    //     },
-    //     components: {
-    //       Steps: {
+      <ThemeProvider
+      theme={{
+       
+          
+        // token: {
+        //   colorPrimary:'#00b96b',       
+        //   algorithm: true, // Enable algorithm
+        //   colorText:'white',
+        //   fontFamily: "Montserrat", 
+        //   colorTextDescription:"#00b96b"
+        // },
+        // components: {
+        //   Steps: {
 
 
-    //       },
-    //       Button: {
-    //         colorPrimary: '#00b96b',
-    //         algorithm: true, // Enable algorithm
-    //       },
-    //       Input: {
-    //         colorPrimary: '#eb2f96',
-    //         algorithm: true, // Enable algorithm
-    //       }
+        //   },
+        //   Button: {
+        //     fontFamily:"Montserrat",
+        //     colorPrimary: '#00b96b',
+        //     algorithm: true, // Enable algorithm
+        //   },
+        //   Input: {
+        //     colorPrimary: '#eb2f96',
+        //     algorithm: true, // Enable algorithm
+        //   }
 
-    //     },
-    //   }}
-    // >
-
+        // },
+      }}
+    >
     <Router>
       <Routes>
         <Route path='/' element={<SiteLayout />}>
-          <Route index element={<h1>Site</h1>} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage/>}/>
+
+            <Route index element={<h1>Site</h1>} />
+
+          {/* <ThemeProvider theme={theme}> */}
+
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+
           <Route element={<PersistsLogin />}>
+
             <Route element={<RequireAuth allowRoles={["Admin", "User"]} />}>
               <Route path='/dash' element={<DashLayout />}>
-                  <Route index element={<Dash />} />
+                <Route index element={<Dash />} />
                 <Route element={<RequireAuth allowRoles={["Admin"]} />}>
                   <Route path="users" element={<Outlet />}>
                     <Route index element={<UsersList />} />
                     <Route path="add" element={<AddUser />} />
-                    <Route path="view/:userId" element={<SingleUserInfo/>} />
+                    <Route path="view/:userId" element={<SingleUserInfo />} />
                     <Route path=":userId" element={<SingleUser />} />
                   </Route>
                 </Route>
                 <Route path='quizzes' element={<Outlet />}>
                   <Route index element={<QuizList />} />
                   <Route path='add' element={<AddQuiz />} />
-                  <Route path='view/:quizId' element={<AllUserQuiz/>} />
+                  <Route path='view/:quizId' element={<AllUserQuiz />} />
                   <Route path=':id' element={<EditQuiz />} >
                     <Route index element={<QuestionList />} />
                     <Route path='add' element={<AddQuestion />} />
@@ -87,21 +96,22 @@ function App() {
                 </Route>
                 <Route path='userQuizzes' element={<Outlet />}>
                   <Route index element={<UserQuizList />} />
-                  <Route path='completed' element={<CompletedQuizzes/>} />
+                  <Route path='completed' element={<CompletedQuizzes />} />
 
                   <Route path=':id' element={<QuizExecution />} />
                   <Route path='view/:id' element={<SingleActiveQuiz />} />
 
                   {/* <Route path='add' element={<AddQuiz />} /> */}
                 </Route>
-                <Route path='profile' element={<ProfilePage/>} />
+                <Route path='profile' element={<ProfilePage />} />
               </Route>
             </Route>
           </Route>
         </Route>
       </Routes>
     </Router >
-    // </ConfigProvider>
+              {/* // </ThemeProvider> */}
+</ThemeProvider>
 
   );
 }

@@ -11,6 +11,7 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import useAvatarColor from '../../hooks/useAvatarColor';
 import Avatar from '@mui/joy/Avatar';
 import { useEffect } from "react"
+import { Typography } from "@mui/material";
 
 const Navbar = () => {
     const { username, firstName, roles } = useAuth()
@@ -55,7 +56,7 @@ const Navbar = () => {
     "--Chip-decoratorChildHeight": "37px",
     bgcolor:`${c}1C`
   }}
->{`Hi, ${firstName}`}</Chip>
+><Typography fontFamily="Montserrat">{`Hi, ${firstName}`}</Typography></Chip>
                 
                 {/* <img
                     // src={user.image || "/noavatar.png"}

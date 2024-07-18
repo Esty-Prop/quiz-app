@@ -52,7 +52,7 @@ const RegisterPage = () => {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography variant="h5">
+          <Typography fontFamily={"Montserrat"} variant="h5">
             Sign up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -66,6 +66,22 @@ const RegisterPage = () => {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  sx={{
+                    '& .MuiInputBase-input': {
+                      fontFamily: 'Montserrat',
+                    },
+                    '& .MuiInputLabel-root': {
+                      fontFamily: 'Montserrat',
+                    },
+                    '& .MuiInputBase-input::placeholder': {
+                      fontFamily: 'Montserrat',
+                    }
+                  }}
+                  InputProps={{
+                    style: { fontFamily: 'Montserrat' },
+                  }}
+                  InputLabelProps={{
+                    style: { fontFamily: 'Montserrat' },}}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -76,6 +92,22 @@ const RegisterPage = () => {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  sx={{
+                    '& .MuiInputBase-input': {
+                      fontFamily: 'Montserrat',
+                    },
+                    '& .MuiInputLabel-root': {
+                      fontFamily: 'Montserrat',
+                    },
+                    '& .MuiInputBase-input::placeholder': {
+                      fontFamily: 'Montserrat',
+                    }
+                  }}
+                  InputProps={{
+                    style: { fontFamily: 'Montserrat' },
+                  }}
+                  InputLabelProps={{
+                    style: { fontFamily: 'Montserrat' },}}
                 />
               </Grid>
           
@@ -87,6 +119,22 @@ const RegisterPage = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  sx={{
+                    '& .MuiInputBase-input': {
+                      fontFamily: 'Montserrat',
+                    },
+                    '& .MuiInputLabel-root': {
+                      fontFamily: 'Montserrat',
+                    },
+                    '& .MuiInputBase-input::placeholder': {
+                      fontFamily: 'Montserrat',
+                    }
+                  }}
+                  InputProps={{
+                    style: { fontFamily: 'Montserrat' },
+                  }}
+                  InputLabelProps={{
+                    style: { fontFamily: 'Montserrat' },}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -97,6 +145,22 @@ const RegisterPage = () => {
                   label="Username"
                   name="username"
                   autoComplete="username"
+                  sx={{
+                    '& .MuiInputBase-input': {
+                      fontFamily: 'Montserrat',
+                    },
+                    '& .MuiInputLabel-root': {
+                      fontFamily: 'Montserrat',
+                    },
+                    '& .MuiInputBase-input::placeholder': {
+                      fontFamily: 'Montserrat',
+                    }
+                  }}
+                  InputProps={{
+                    style: { fontFamily: 'Montserrat' },
+                  }}
+                  InputLabelProps={{
+                    style: { fontFamily: 'Montserrat' },}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -108,6 +172,22 @@ const RegisterPage = () => {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  sx={{
+                    '& .MuiInputBase-input': {
+                      fontFamily: 'Montserrat',
+                    },
+                    '& .MuiInputLabel-root': {
+                      fontFamily: 'Montserrat',
+                    },
+                    '& .MuiInputBase-input::placeholder': {
+                      fontFamily: 'Montserrat',
+                    }
+                  }}
+                  InputProps={{
+                    style: { fontFamily: 'Montserrat' },
+                  }}
+                  InputLabelProps={{
+                    style: { fontFamily: 'Montserrat' },}}
                 />
               </Grid>
             </Grid>
@@ -115,7 +195,8 @@ const RegisterPage = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2 , fontFamily: 'Montserrat'}}
+              fontFamily={"Montserrat"}
             >
               Sign Up
             </Button>

@@ -39,17 +39,20 @@ const QuizList = () => {
 
   if (isLoading) return <h1> Loading ...</h1>
   if (isError) return <h1>{JSON.stringify(error)}</h1>
-  const filteredData = !q ? [...quizzesObject.data] : quizzesObject.data.filter(quiz => quiz?.title?.indexOf(q) > -1)
-
+ 
+   let filteredData = !q ? [...quizzesObject.data] : quizzesObject.data.filter(quiz => quiz?.title?.indexOf(q) > -1)
+   filteredData = quizzesObject.data.map((item)=>{
+    return {...item,avg: Math.floor(item.avg)}
+})
   return (
 
     <div>
-      <Typography color="primary" fontWeight={500} fontSize={30}>
+      <Typography color="primary" fontWeight={500} fontSize={30} fontFamily="Montserrat">
         Quizzes
       </Typography>
-      <Typography color="neutral" fontWeight={200} fontSize={12}>
+      {/* <Typography color="neutral" fontWeight={200} fontSize={12} fontFamily="Montserrat">
         Quizzes you delta makefeed jarks if hello for you :)
-      </Typography>
+      </Typography> */}
       <Sheet
         className="SearchAndFilters-mobile"
         sx={{
@@ -122,10 +125,10 @@ const QuizList = () => {
               <tr key={quiz.id}>
                
                 <td>
-                  <Typography level="body-xs">{quiz.title}</Typography>
+                  <Typography fontSize={'14px'} level="body-xs" fontFamily="Montserrat">{quiz.title}</Typography>
                 </td>
                 <td>
-                  <Typography level="body-xs"> {quiz.createdAt?.toString().slice(0, 10)}</Typography>
+                  <Typography level="body-xs" fontFamily="Montserrat"> {quiz.createdAt?.toString().slice(0, 10)}</Typography>
                 </td>
                 <td>
                   <Chip
@@ -153,8 +156,8 @@ const QuizList = () => {
                   <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                     <Avatar size="sm">{quiz.questions.length}</Avatar>
                     <div>
-                      <Typography level="body-xs">{`activity: ${quiz.cnt} users`} </Typography>
-                      <Typography level="body-xs">{`avg ${quiz.avg}%`}</Typography>
+                      <Typography level="body-xs" fontFamily="Montserrat">{`activity: ${quiz.cnt} users`} </Typography>
+                      <Typography level="body-xs" fontFamily="Montserrat">{`avg ${quiz.avg}%`}</Typography>
                     </div>
                   </Box>
                 </td>
@@ -163,7 +166,9 @@ const QuizList = () => {
                     <Button size="sm" variant="outlined" color="primary" onClick={() => { navigateClick(quiz._id,1) }}>
                       View user quizzes
                     </Button>
-                    <Button size="sm" variant="plain" color="neutral" onClick={() => { navigateClick(quiz._id,0) }}>
+                    <Button size="sm" 
+                    variant="plain" 
+                    color="neutral" onClick={() => { navigateClick(quiz._id,0) }}>
                       Edit
                     </Button>
                     <Button size="sm" variant="soft" color="danger" onClick={() => { deleteClick(quiz) }} >

@@ -54,6 +54,7 @@
     background-color: var(--bg);
     color: var(--text);
     margin:10px 0px;
+    font-family: "Montserrat";
 }
 .single-quiz-form input
 {
@@ -75,6 +76,8 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: 0;
+    font-family:"Montserrat"
+
 }
 .lableCheckbox{
     display: flex;

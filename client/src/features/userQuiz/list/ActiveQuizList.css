@@ -41,6 +41,8 @@
     color: white;
     border-style: none;
     box-shadow: 0px 15px 20px rgba(56, 42, 255, 0.6);
+    cursor: pointer;
+    font-family:"Montserrat"
 }
 .quiz-score, .quiz-view{
 display: flex;

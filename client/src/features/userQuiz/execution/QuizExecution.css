@@ -1,3 +1,7 @@
+.quiz{
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
 .quiz {
     position: absolute;
     top: 0;
@@ -7,7 +11,7 @@
     width: 100VW;
     height: 100vh;
     background-color: rgb(34, 34, 190);
-    z-index: 10;
+    z-index: 50;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,8 +129,12 @@ display: none;
 
 .quiz-completed{
     width: 100%;
+    
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
 }

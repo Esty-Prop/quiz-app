@@ -24,6 +24,7 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import CloseIcon from '@mui/icons-material/Close';
 import QuizIcon from '@mui/icons-material/Quiz';
 import { useEffect } from "react";
+import useAvatarColor from '../../../hooks/useAvatarColor';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import useAuth from "../../../hooks/useAuth";
 import SportsScoreIcon from '@mui/icons-material/SportsScore';
@@ -45,6 +46,10 @@ const SingleUserInfo = () => {
     }
   }, [userId])
 
+  const AvatarColor=(name)=> {
+    return useAvatarColor(name)
+  }
+
   if (!isSuccess) return <h4> Loading ...</h4>
   console.log(userId);
   console.log(UserQuizzesObject);
@@ -53,11 +58,12 @@ const SingleUserInfo = () => {
   console.log(quizzes);
   const filteredData = !q ? [...quizzes] : quizzes.filter(quiz => quiz?.quiz?.title.indexOf(q) > -1)
   const avg = Math.round(quizzes.reduce((acc, c) => acc + c.score, 0) / quizzes.length)
-  if (!quizzes) return <h1>{"Not found"}</h1>
+  if (quizzes.length==0) return      <Typography fontFamily="Montserrat" sx={{ m: 2, bgcolor: '' }} level="h4">No user quizzes</Typography>
+
   return (
     <div>
-      {<Avatar color='red' size="md">{firstName.charAt(0) + lastName.charAt(0)} </Avatar>}
-      <Typography sx={{ m: 2, bgcolor: '' }} level="h4">{username}</Typography>
+      {<Avatar {...AvatarColor((`${username} `))} size="md">{firstName.charAt(0) + lastName.charAt(0)} </Avatar>}
+      <Typography fontFamily="Montserrat" sx={{ m: 2, bgcolor: '' }} level="h4">{firstName+" "+lastName}</Typography>
 
 
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
@@ -75,10 +81,7 @@ const SingleUserInfo = () => {
           gap: 1,
         }}
       >
-        {/* <Link to={`/dash/quizzes/${id}/add`} className="quizzes-list-add-button">
-          add question
-        </Link> */}
-        <Search />
+      <Search />
 
       </Sheet>
       <Sheet
@@ -131,10 +134,7 @@ const SingleUserInfo = () => {
                 </td>
 
                 <td>
-                  {/* <Stack direction="row" spacing={1}>
-
-                <Chip icon={<CloseIcon />} label="With Icon" />
-</Stack> */}
+                  
                   <Chip
                     variant="soft"
                     size="md"
@@ -196,14 +196,7 @@ const SingleUserInfo = () => {
 
                 </td>
 
-                {/* <td>
-                  <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-            
-                    <Button size="sm" variant="soft" color="danger" onClick={() => { deleteClick(quiz) }} >
-                      Delete
-                    </Button>
-                  </Box>
-                </td> */}
+               
               </tr>
             ))}
           </tbody>

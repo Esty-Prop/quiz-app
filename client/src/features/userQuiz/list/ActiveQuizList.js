@@ -1,5 +1,5 @@
 import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
-import { Button } from "@mui/material"
+import { Button, ButtonBase } from "@mui/material"
 import { useGatAllActivequizzesQuery } from "../../quiz/quizzesApiSlice"
 import { useAddUserQuizMutation, useGetAllUserQuizByUserMutation } from "../userQuizApiSlice";
 import useAuth from "../../../hooks/useAuth";
@@ -43,7 +43,7 @@ const ActiveQuizList = () => {
                         </div>
                     }
                 })}
-                {quizzesObject.data && <h3>No Quizzes</h3>}
+                {/* {quizzesObject.data && <h3>No Quizzes</h3>} */}
             </div>
 
             <div className="quiz-completed">

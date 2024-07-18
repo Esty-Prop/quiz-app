@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 50px;
   margin-top: 20px;
-  font-family: "Noto Sans Hebrew", sans-serif;
+  font-family:"Montserrat"
 
 }
 
@@ -14,6 +14,8 @@
   list-style: none;
   color: var(--text);
   font-weight: 400;
+  font-family:"Montserrat"
+
 }
 
 .single-user-info {
@@ -30,7 +32,7 @@
   padding-bottom: 20px;
 }
 .single-user-info-section {
-  background-color: rgba(0, 89, 255, 0.381) !important;
+  background-color: rgba(191, 191, 191, 0.381) !important;
 height: 150px;
   border-radius: 10px 10px 0 0;
 }
@@ -68,11 +70,13 @@ height: 150px;
 .single-user-form textarea,
 .single-user-form select {
   padding: 20px;
-  border: 2px solid #2e374a;
+  border: 2px solid #a3a3a3;
   border-radius: 5px;
   background-color: var(--bg);
   color: var(--text);
   margin: 10px 0px;
+  font-family:"Montserrat"
+
 }
 
 .single-user-form label {
@@ -88,6 +92,8 @@ height: 150px;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
+  font-family:"Montserrat"
+
 }
 
 .single-user-info-name {
